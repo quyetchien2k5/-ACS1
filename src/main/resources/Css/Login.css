@@ -1,0 +1,18 @@
+#SignIn__Button_SignIn {
+    -fx-background-color: transparent;
+    -fx-border-radius: 20px;
+    -fx-border-color: white;
+    -fx-border-width: 2px;
+}
+#SignIn__Input_Email{
+    -fx-background-color: transparent;
+    -fx-border-color: white;
+    -fx-border-width: 0px 0px 2px 0px;
+}
+#SignIn__Input_Password{
+    -fx-background-color: transparent;
+    -fx-border-color: white;
+    -fx-border-width: 0px 0px 2px 0px;
+}
+
+

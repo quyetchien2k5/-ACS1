@@ -1,4 +1,4 @@
-module com.example.do_an_co_so_1 {
+module main.java {
     requires javafx.controls;
     requires javafx.fxml;
 
@@ -6,6 +6,8 @@ module com.example.do_an_co_so_1 {
     requires com.dlsc.formsfx;
     requires com.almasb.fxgl.all;
 
-    opens com.example.do_an_co_so_1 to javafx.fxml;
-    exports com.example.do_an_co_so_1;
+    opens View to javafx.fxml;
+    exports View;
+    exports Controller;
+    exports Model;
 }
