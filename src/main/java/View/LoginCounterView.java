@@ -8,7 +8,7 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
-public class LoginView extends Application {
+public class LoginCounterView extends Application {
 
     public static void main(String[] args) {
         launch(args);
@@ -16,12 +16,12 @@ public class LoginView extends Application {
 
     @Override
     public void start(Stage stage) throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/Fxml/login.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/Fxml/LoginCounter.fxml"));
         Parent root = loader.load();
         Scene scene = new Scene(root, 600, 372);
-        scene.getStylesheets().add(getClass().getResource("/Css/Login.css").toExternalForm());
+        scene.getStylesheets().add(getClass().getResource("/Css/LoginCounter.css").toExternalForm());
         stage.setScene(scene);
-        stage.setTitle("Login"); // Thiết lập tiêu đề cho Stage
+        stage.setTitle("Login");
         stage.show();
 
     }

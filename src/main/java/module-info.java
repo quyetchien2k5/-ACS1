@@ -5,6 +5,8 @@ module main.java {
     requires org.controlsfx.controls;
     requires com.dlsc.formsfx;
     requires com.almasb.fxgl.all;
+    requires mysql.connector.j;
+    requires java.sql;
 
     opens View to javafx.fxml;
     exports View;

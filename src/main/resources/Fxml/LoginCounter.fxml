@@ -10,7 +10,7 @@
 <?import javafx.scene.text.Font?>
 
 
-<AnchorPane prefHeight="318.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.LoginController">
+<AnchorPane prefHeight="318.0" prefWidth="600.0" stylesheets="@../Css/LoginCounter.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.LoginCounterController">
    <children>
       <ImageView fitHeight="400.0" fitWidth="600.0" pickOnBounds="true" preserveRatio="true">
          <image>
@@ -24,19 +24,25 @@
                   <Font name="Ink Free" size="45.0" />
                </font>
             </Label>
-            <PasswordField fx:id="SignIn__Input_Password" layoutX="193.0" layoutY="199.0" prefHeight="25.0" prefWidth="215.0" promptText="Password" />
+            <PasswordField fx:id="SignIn__Input_Password" layoutX="193.0" layoutY="209.0" prefHeight="25.0" prefWidth="215.0" promptText="Password" />
             <TextField fx:id="SignIn__Input_Email" layoutX="193.0" layoutY="154.0" prefHeight="25.0" prefWidth="215.0" promptText="Email" />
-            <Button fx:id="SignIn__Button_SignIn" layoutX="252.0" layoutY="246.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="96.0" text="Đăng nhập" />
+            <Button fx:id="SignIn__Button_SignIn" layoutX="238.0" layoutY="265.0" mnemonicParsing="false" onAction="#LoginAction" prefHeight="25.0" prefWidth="125.0" stylesheets="@../Css/LoginCounter.css" text="Đăng nhập" textFill="WHITE">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Button>
             <ImageView fitHeight="25.0" fitWidth="25.0" layoutX="159.0" layoutY="154.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../Image/Icon/mail.png" />
                </image>
             </ImageView>
-            <ImageView fitHeight="25.0" fitWidth="25.0" layoutX="159.0" layoutY="199.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="25.0" fitWidth="25.0" layoutX="159.0" layoutY="209.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../Image/Icon/padlock.png" />
                </image>
             </ImageView>
+            <Label fx:id="SignIn__Error_Email" alignment="CENTER_RIGHT" layoutX="229.0" layoutY="186.0" prefHeight="17.0" prefWidth="171.0" textFill="#f81e1eeb" />
+            <Label fx:id="SignIn__Error_Password" alignment="CENTER_RIGHT" layoutX="238.0" layoutY="242.0" prefHeight="17.0" prefWidth="171.0" textFill="#f81e1eeb" />
          </children>
       </AnchorPane>
    </children>
