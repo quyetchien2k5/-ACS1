@@ -1,14 +1,127 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="Controller.HomeCounterController"
-            prefHeight="400.0" prefWidth="600.0">
 
+<AnchorPane fx:id="HomeCounter__Background" prefHeight="700.0" prefWidth="1171.0" style="-fx-background-color: white; -fx-border-color: #5f9ea0; -fx-border-width: 5px;" stylesheets="@../Css/HomeCounter.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.HomeCounterController">
+   <children>
+      <AnchorPane fx:id="HomeCounter__NavBar" prefHeight="132.0" prefWidth="114.0" style="-fx-background-color: #5f9ea0; -fx-background-radius: 0px 0px 20px 20px; -fx-border-radius: 0px 0px 20px 20px;">
+         <children>
+            <ImageView fx:id="HomeCounter__Avatar" fitHeight="87.0" fitWidth="94.0" layoutX="14.0" layoutY="23.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../Image/Icon/user%20(9).png" />
+               </image>
+            </ImageView>
+         </children>
+      </AnchorPane>
+      <AnchorPane layoutX="113.0" prefHeight="87.0" prefWidth="1087.0" style="-fx-background-color: #5f9ea0; -fx-background-radius: 0px 0px 20px 0px; -fx-border-radius: 0px 0px 20px 0px;">
+         <children>
+            <ImageView fx:id="HomeCounter__Avatar1" fitHeight="48.0" fitWidth="48.0" layoutX="548.0" layoutY="9.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../Image/Icon/motorbike.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="HomeCounter__Avatar12" fitHeight="48.0" fitWidth="48.0" layoutX="408.0" layoutY="9.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../Image/Icon/shopping-app.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="HomeCounter__Avatar13" fitHeight="49.0" fitWidth="48.0" layoutX="272.0" layoutY="9.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../Image/Icon/counter.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="HomeCounter__Avatar141" fitHeight="41.0" fitWidth="38.0" layoutX="1035.0" layoutY="21.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../Image/Icon/turn-off.png" />
+               </image>
+            </ImageView>
+            <Label layoutX="280.0" layoutY="61.0" text="Oder" textFill="WHITE">
+               <font>
+                  <Font name="Bauhaus 93" size="14.0" />
+               </font>
+            </Label>
+            <Label layoutX="411.0" layoutY="61.0" text="Online" textFill="WHITE">
+               <font>
+                  <Font name="Bauhaus 93" size="14.0" />
+               </font>
+            </Label>
+            <ImageView fx:id="HomeCounter__Avatar11" fitHeight="48.0" fitWidth="48.0" layoutX="674.0" layoutY="12.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../Image/Icon/table.png" />
+               </image>
+            </ImageView>
+            <Label layoutX="559.0" layoutY="61.0" text="Ship" textFill="WHITE">
+               <font>
+                  <Font name="Bauhaus 93" size="14.0" />
+               </font>
+            </Label>
+            <Label layoutX="680.0" layoutY="57.0" text="Table" textFill="WHITE">
+               <font>
+                  <Font name="Bauhaus 93" size="14.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
+      <AnchorPane layoutY="87.0" prefHeight="602.0" prefWidth="1197.0">
+         <children>
+            <AnchorPane layoutX="-1.0" layoutY="72.0" prefHeight="452.0" prefWidth="121.0" style="-fx-background-color: #5f9ea0; -fx-background-radius: 0px 20px 20px 0px;">
+               <children>
+                  <ImageView fx:id="HomeCounter__Avatar14" fitHeight="48.0" fitWidth="42.0" layoutX="36.0" layoutY="199.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../Image/Icon/box%20(1).png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fx:id="HomeCounter__Avatar142" fitHeight="48.0" fitWidth="42.0" layoutX="36.0" layoutY="327.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../Image/Icon/time-past.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fx:id="HomeCounter__Avatar143" fitHeight="48.0" fitWidth="42.0" layoutX="36.0" layoutY="81.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../Image/Icon/eating.png" />
+                     </image>
+                  </ImageView>
+               </children>
+            </AnchorPane>
+            <AnchorPane layoutX="859.0" layoutY="23.0" prefHeight="557.0" prefWidth="317.0" style="-fx-background-color: #5f9ea0; -fx-background-radius: 20px;">
+               <children>
+                  <TableView layoutX="7.0" layoutY="14.0" prefHeight="369.0" prefWidth="303.0">
+                    <columns>
+                      <TableColumn prefWidth="53.0" text="Number" />
+                      <TableColumn prefWidth="155.0" text="Name" />
+                        <TableColumn prefWidth="94.0" text="Pice" />
+                    </columns>
+                  </TableView>
+                  <Button layoutX="37.0" layoutY="435.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="96.0" text="Remove" />
+                  <Button layoutX="179.0" layoutY="435.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="96.0" text="Reset" />
+                  <Label layoutX="15.0" layoutY="398.0" text="Total:" textFill="WHITE">
+                     <font>
+                        <Font name="Bauhaus 93" size="18.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="73.0" layoutY="378.0" prefHeight="20.0" prefWidth="230.0" textFill="WHITE">
+                     <font>
+                        <Font name="Bauhaus 93" size="18.0" />
+                     </font>
+                  </Label>
+                  <Button layoutX="23.0" layoutY="496.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="279.0" text="Remove" />
+               </children>
+            </AnchorPane>
+            <AnchorPane layoutX="134.0" layoutY="23.0" prefHeight="557.0" prefWidth="698.0" style="-fx-background-color: green;">
+               <children>
+                  <ScrollPane prefHeight="557.0" prefWidth="698.0" />
+               </children>
+            </AnchorPane>
+         </children>
+      </AnchorPane>
+   </children>
 </AnchorPane>
