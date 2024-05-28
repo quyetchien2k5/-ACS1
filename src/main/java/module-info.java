@@ -8,8 +8,10 @@ module main.java {
     requires mysql.connector.j;
     requires java.sql;
 
-    opens View to javafx.fxml;
-    exports View;
-    exports Controller;
-    exports Model;
+    opens view to javafx.fxml;
+    opens controller to javafx.fxml;
+
+    exports view;
+    exports controller;
+    exports model;
 }

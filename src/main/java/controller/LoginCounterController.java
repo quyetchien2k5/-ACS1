@@ -1,7 +1,6 @@
-package Controller;
+package controller;
 
-import Model.DatabaseConnection;
-import View.HomeCounterView;
+import view.HomeCounterView;
 import javafx.event.ActionEvent;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -11,15 +10,11 @@ import javafx.scene.control.TextField;
 import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
 import java.sql.*;
-import java.util.Date;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import  Model.DatabaseConnection.*;
 import javafx.stage.Stage;
-import org.controlsfx.control.spreadsheet.SpreadsheetCellEditor;
-
-import  java.sql.DriverManager.*;
+import model.DatabaseConnection;
 
 public class LoginCounterController {
     private static final String EMAIL_REGEX = "^[A-Za-z0-9+_.-]+@[A-Za-z0-9.-]+$";

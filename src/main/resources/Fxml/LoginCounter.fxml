@@ -10,7 +10,7 @@
 <?import javafx.scene.text.Font?>
 
 
-<AnchorPane prefHeight="318.0" prefWidth="600.0" stylesheets="@../Css/LoginCounter.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.LoginCounterController">
+<AnchorPane prefHeight="318.0" prefWidth="600.0" stylesheets="@../Css/LoginCounter.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.LoginCounterController">
    <children>
       <ImageView fitHeight="400.0" fitWidth="600.0" pickOnBounds="true" preserveRatio="true">
          <image>

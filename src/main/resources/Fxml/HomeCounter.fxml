@@ -11,7 +11,7 @@
 <?import javafx.scene.text.Font?>
 
 
-<AnchorPane fx:id="HomeCounter__Background" prefHeight="700.0" prefWidth="1171.0" style="-fx-background-color: white; -fx-border-color: #5f9ea0; -fx-border-width: 5px;" stylesheets="@../Css/HomeCounter.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.HomeCounterController">
+<AnchorPane fx:id="HomeCounter__Background" prefHeight="700.0" prefWidth="1171.0" style="-fx-background-color: white; -fx-border-color: #5f9ea0; -fx-border-width: 5px;" stylesheets="@../Css/HomeCounter.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.HomeCounterController">
    <children>
       <AnchorPane fx:id="HomeCounter__NavBar" prefHeight="132.0" prefWidth="114.0" style="-fx-background-color: #5f9ea0; -fx-background-radius: 0px 0px 20px 20px; -fx-border-radius: 0px 0px 20px 20px;">
          <children>
