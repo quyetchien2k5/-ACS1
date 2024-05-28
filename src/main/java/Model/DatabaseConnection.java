@@ -10,7 +10,7 @@ public class DatabaseConnection {
     private final String USER = "root";
     private final String PASSWORD = "";
 
-    public Connection getConnection() throws Exception{
+    public  Connection getConnection() throws Exception{
         Connection connection = null;
             // Đăng ký driver
             Class.forName("com.mysql.cj.jdbc.Driver");

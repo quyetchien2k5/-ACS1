@@ -2,6 +2,7 @@ package Controller;
 
 import Model.DatabaseConnection;
 import View.HomeCounterView;
+import View.LoginCounterView;
 import javafx.event.ActionEvent;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -88,6 +89,10 @@ public class LoginCounterController {
                 if (rs.next()) {
                     HomeCounterView homeCounterView = new HomeCounterView();
                     homeCounterView.start(new Stage());
+                    LoginCounterView loginCounterView = new LoginCounterView();
+                    HomeCounterController homeCounterController = new HomeCounterController();
+                    homeCounterController.loadMenu();
+                    loginCounterView.stop();
                 }else{
                     SignIn__Error_Password.setText("Tài khoản mật khẩu không hợp lệ");
                 }
