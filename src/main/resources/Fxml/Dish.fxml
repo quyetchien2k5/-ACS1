@@ -26,7 +26,7 @@
          </font>
       </Label>
       <Spinner fx:id="Dish_Number" layoutX="14.0" layoutY="211.0" prefHeight="25.0" prefWidth="104.0" />
-      <ImageView fx:id="Dish_Add" fitHeight="35.0" fitWidth="37.0" layoutX="140.0" layoutY="206.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="Dish_Add" fitHeight="35.0" fitWidth="37.0" layoutX="140.0" layoutY="206.0" onMouseClicked="#Action_AddDish" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../Image/Icon/add%20(1).png" />
          </image>

@@ -9,6 +9,7 @@ module main.java {
     requires java.sql;
 
     opens View to javafx.fxml;
+    opens Controller to javafx.fxml;
     exports View;
     exports Controller;
     exports Model;

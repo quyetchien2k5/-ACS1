@@ -2,6 +2,7 @@ package Controller;
 
 import Model.DatabaseConnection;
 import Model.DishModel;
+import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.Spinner;
 import javafx.scene.control.SpinnerValueFactory;
@@ -16,17 +17,16 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import javafx.scene.image.Image;
+import javafx.scene.input.MouseEvent;
 
 public class DishController {
-    // Dish id ------------------------------------------------------------
     public ImageView Dish_Image;
     public Label Dish_Name;
     public Label Dish_Price;
     public Spinner Dish_Number;
     public ImageView Dish_Add;
 
-
-
+    DishModel dishModel = new DishModel();
     public List<DishModel> getProducts() throws Exception{
         List<DishModel> modelProducts = new ArrayList<>();
         String SELECT_PRODUCTS_QUERY = "SELECT * FROM menu";
@@ -45,19 +45,18 @@ public class DishController {
                 dishModel.setPrice(resultSet.getInt("price"));
                 dishModel.setImage(resultSet.getString("image"));
 
-                modelProducts.add(new DishModel());
+                modelProducts.add(dishModel);
             }
         } catch (SQLException e) {
             e.printStackTrace(); // Handle or log the exception appropriately
         }
-
         return modelProducts;
     }
     public void setProductData(DishModel modelProduct) {
         Dish_Name.setText(modelProduct.getNameProduct());
         Dish_Price.setText(String.valueOf(modelProduct.getPrice()));
-
         System.out.println(modelProduct.getNameProduct());
+
         try {
             String imagePathproduct = modelProduct.getImage(); // Lấy đường dẫn từ CSDL
             Image image = new Image(imagePathproduct);
@@ -67,9 +66,11 @@ public class DishController {
             e.printStackTrace(); // Xử lý hoặc ghi nhận ngoại lệ một cách thích hợp
         }
         // Thiết lập giá trị Spinner
-        int quantityinput = 0;
-        SpinnerValueFactory<Integer> valueFactory = new SpinnerValueFactory.IntegerSpinnerValueFactory(1, quantityinput, 1);
+        SpinnerValueFactory<Integer> valueFactory = new SpinnerValueFactory.IntegerSpinnerValueFactory(1, 10, 1);
         Dish_Number.setValueFactory(valueFactory);
     }
 
+    public void Action_AddDish(MouseEvent mouseEvent) {
+
+    }
 }

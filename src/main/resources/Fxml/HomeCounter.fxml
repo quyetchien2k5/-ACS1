@@ -72,15 +72,15 @@
                <children>
                   <AnchorPane layoutX="861.0" layoutY="14.0" prefHeight="557.0" prefWidth="317.0" style="-fx-background-color: #5f9ea0; -fx-background-radius: 20px;">
                      <children>
-                        <TableView layoutX="7.0" layoutY="14.0" prefHeight="369.0" prefWidth="303.0">
+                        <TableView fx:id="Table_Pay" layoutX="7.0" layoutY="14.0" prefHeight="369.0" prefWidth="303.0">
                           <columns>
-                            <TableColumn prefWidth="53.0" text="Number" />
-                            <TableColumn prefWidth="155.0" text="Name" />
-                              <TableColumn prefWidth="94.0" text="Pice" />
+                            <TableColumn fx:id="Table_Pay_Number" prefWidth="53.0" text="Number" />
+                            <TableColumn fx:id="Table_Pay_Name" prefWidth="155.0" text="Name" />
+                              <TableColumn fx:id="Table_Pay_Price" prefWidth="94.0" text="Price" />
                           </columns>
                         </TableView>
-                        <Button layoutX="37.0" layoutY="435.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="96.0" text="Remove" />
-                        <Button layoutX="179.0" layoutY="435.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="96.0" text="Reset" />
+                        <Button layoutX="37.0" layoutY="435.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="96.0" styleClass="Button" text="Remove" />
+                        <Button layoutX="179.0" layoutY="435.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="96.0" styleClass="Button" text="Reset" />
                         <Label layoutX="15.0" layoutY="398.0" text="Total:" textFill="WHITE">
                            <font>
                               <Font name="Bauhaus 93" size="18.0" />
@@ -91,7 +91,7 @@
                               <Font name="Bauhaus 93" size="18.0" />
                            </font>
                         </Label>
-                        <Button layoutX="23.0" layoutY="496.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="279.0" text="Remove" />
+                        <Button layoutX="23.0" layoutY="496.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="279.0" styleClass="Button" text="Pay" />
                      </children>
                   </AnchorPane>
                   <ScrollPane fx:id="Menu_List" layoutX="22.0" layoutY="68.0" prefHeight="509.0" prefWidth="813.0" />
