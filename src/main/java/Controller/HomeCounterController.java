@@ -1,4 +1,5 @@
 package controller;
+<<<<<<< HEAD:src/main/java/Controller/HomeCounterController.java
 
 import java.awt.print.Printable;
 import java.awt.print.PrinterException;
@@ -22,6 +23,8 @@ import model.DishModel;
 import java.sql.SQLException;
 import java.text.AttributedCharacterIterator;
 import java.util.List;
+=======
+>>>>>>> ea442ad5cb4c4dd7c589c95c1089734311f14d6c:src/main/java/controller/HomeCounterController.java
 
 public class HomeCounterController {
 

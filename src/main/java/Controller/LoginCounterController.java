@@ -17,6 +17,8 @@ import java.util.regex.Pattern;
 
 import javafx.stage.Stage;
 
+import model.DatabaseConnection;
+
 public class LoginCounterController {
     private static final String EMAIL_REGEX = "^[A-Za-z0-9+_.-]+@[A-Za-z0-9.-]+$";
     public PasswordField SignIn__Input_Password;
