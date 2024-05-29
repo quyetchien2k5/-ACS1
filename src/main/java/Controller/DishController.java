@@ -1,15 +1,15 @@
-package Controller;
+package controller;
 
-import Model.DatabaseConnection;
-import Model.DishModel;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import model.DatabaseConnection;
+import model.DishModel;
 import javafx.scene.control.Label;
 import javafx.scene.control.Spinner;
 import javafx.scene.control.SpinnerValueFactory;
 import javafx.scene.image.ImageView;
 
-import java.io.InputStream;
-import java.net.URL;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -20,14 +20,22 @@ import javafx.scene.image.Image;
 import javafx.scene.input.MouseEvent;
 
 public class DishController {
+    private HomeCounterController homeCounterController;
+
+    public void setHomeCounterController(HomeCounterController homeCounterController) {
+        this.homeCounterController = homeCounterController;
+    }
+
     public ImageView Dish_Image;
     public Label Dish_Name;
     public Label Dish_Price;
     public Spinner Dish_Number;
     public ImageView Dish_Add;
 
+
     DishModel dishModel = new DishModel();
-    public List<DishModel> getProducts() throws Exception{
+
+    public List<DishModel> getProducts() throws Exception {
         List<DishModel> modelProducts = new ArrayList<>();
         String SELECT_PRODUCTS_QUERY = "SELECT * FROM menu";
         DatabaseConnection databaseConnection = new DatabaseConnection();
@@ -52,6 +60,7 @@ public class DishController {
         }
         return modelProducts;
     }
+
     public void setProductData(DishModel modelProduct) {
         Dish_Name.setText(modelProduct.getNameProduct());
         Dish_Price.setText(String.valueOf(modelProduct.getPrice()));
@@ -71,6 +80,9 @@ public class DishController {
     }
 
     public void Action_AddDish(MouseEvent mouseEvent) {
-
+        System.out.println("input data bill"+ Dish_Name.getText()+ Dish_Price.getText()+ Dish_Number.getValue());
+        homeCounterController.setTableBill(Integer.parseInt(Dish_Number.getValue().toString()), Dish_Name.getText(), Integer.parseInt(Dish_Price.getText()));
     }
+
+
 }

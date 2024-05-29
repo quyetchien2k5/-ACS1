@@ -1,4 +1,4 @@
-package View;
+package view;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -20,5 +20,7 @@ public class HomeCounterView extends Application {
             stage.show();
 
         }
+    public static void main(String[] args) {
+        launch(args);
     }
-
+}

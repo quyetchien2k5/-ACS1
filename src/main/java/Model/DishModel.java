@@ -1,4 +1,4 @@
-package Model;
+package model;
 
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
@@ -8,17 +8,24 @@ public class DishModel {
     private SimpleStringProperty Name;
     private SimpleIntegerProperty Price;
     private SimpleStringProperty Image;
-
-
+    private SimpleIntegerProperty Number; // Thêm thuộc tính số lượng
 
     public DishModel(int id, String name, int price, String image) {
         this.Id = new SimpleIntegerProperty(id);
         this.Name = new SimpleStringProperty(name);
         this.Price = new SimpleIntegerProperty(price);
         this.Image = new SimpleStringProperty(image);
+
     }
 
-    public DishModel(){}
+    public DishModel( int number, String name, int price) {
+        this.Name = new SimpleStringProperty(name);
+        this.Price = new SimpleIntegerProperty(price);
+        this.Number = new SimpleIntegerProperty(number); // Khởi tạo thuộc tính số lượng
+    }
+    public DishModel() {}
+
+
 
     public int getIdProduct() {
         return Id.get();
@@ -50,8 +57,6 @@ public class DishModel {
         this.Name.set(nameProduct);
     }
 
-
-
     public int getPrice() {
         return Price.get();
     }
@@ -81,5 +86,19 @@ public class DishModel {
         }
         this.Image.set(image);
     }
-}
 
+    public int getNumber() {
+        return Number.get();
+    }
+
+    public SimpleIntegerProperty numberProperty() {
+        return Number;
+    }
+
+    public void setNumber(int number) {
+        if (this.Number == null) {
+            this.Number = new SimpleIntegerProperty();
+        }
+        this.Number.set(number);
+    }
+}

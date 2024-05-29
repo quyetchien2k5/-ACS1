@@ -10,7 +10,8 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="HomeCounter__Background" prefHeight="699.0" prefWidth="1193.0" style="-fx-background-color: white; -fx-border-color: #5f9ea0; -fx-border-width: 5px;" stylesheets="@../Css/HomeCounter.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.HomeCounterController">
+<AnchorPane fx:id="HomeCounter__Background" prefHeight="700.0" prefWidth="1171.0" style="-fx-background-color: white; -fx-border-color: #5f9ea0; -fx-border-width: 5px;" stylesheets="@../Css/HomeCounter.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.HomeCounterController">
+
    <children>
       <AnchorPane layoutX="9.0" prefHeight="87.0" prefWidth="1191.0" style="-fx-background-color: #5f9ea0; -fx-background-radius: 0px 0px 20px 20px; -fx-border-radius: 0px 0px 20px 20px;">
          <children>
@@ -79,8 +80,8 @@
                               <TableColumn fx:id="Table_Pay_Price" prefWidth="94.0" text="Price" />
                           </columns>
                         </TableView>
-                        <Button layoutX="37.0" layoutY="435.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="96.0" styleClass="Button" text="Remove" />
-                        <Button layoutX="179.0" layoutY="435.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="96.0" styleClass="Button" text="Reset" />
+                        <Button fx:id="Bill_Delete_Button" layoutX="37.0" layoutY="435.0" mnemonicParsing="false" onAction="#Bill_Delete" prefHeight="31.0" prefWidth="96.0" styleClass="Button" text="Xóa" />
+                        <Button fx:id="Bill_Reset_Button" layoutX="179.0" layoutY="435.0" mnemonicParsing="false" onAction="#Bill_Reset" prefHeight="31.0" prefWidth="96.0" styleClass="Button" text="Đặt lại" />
                         <Label layoutX="15.0" layoutY="398.0" text="Total:" textFill="WHITE">
                            <font>
                               <Font name="Bauhaus 93" size="18.0" />
@@ -91,7 +92,7 @@
                               <Font name="Bauhaus 93" size="18.0" />
                            </font>
                         </Label>
-                        <Button layoutX="23.0" layoutY="496.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="279.0" styleClass="Button" text="Pay" />
+                        <Button fx:id="Bill_Pay_Button" layoutX="23.0" layoutY="496.0" mnemonicParsing="false" onAction="#Bill_Pay" prefHeight="42.0" prefWidth="279.0" styleClass="Button" text="Mua" />
                      </children>
                   </AnchorPane>
                   <ScrollPane fx:id="Menu_List" layoutX="22.0" layoutY="68.0" prefHeight="509.0" prefWidth="813.0" />

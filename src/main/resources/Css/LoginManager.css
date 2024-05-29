@@ -1,0 +1,41 @@
+.container{
+	-fx-background-color: white;
+  	-fx-background-position: center;
+}
+.button{
+    -fx-background-color: transparent;
+    -fx-border-radius: 20px;
+    -fx-border-color: white;
+    -fx-border-width: 2px;
+}
+.textField{
+    -fx-background-color: transparent;
+    -fx-border-color: white;
+    -fx-border-width: 2px 2px 2px 2px;
+    -fx-prompt-text-fill:white;
+    	-fx-text-fill: white;
+
+}
+.password{
+    -fx-background-color: transparent;
+    -fx-border-color: white;
+    -fx-border-width: 0px 0px 2px 0px;
+}
+.date-picker .day-cell:selected{
+    -fx-background-color: #e0e0e0;
+    -fx-text-fill: white;
+
+}
+.label {
+    -fx-alignment: center;
+}
+.hyperlink {
+    -fx-alignment: center;
+}
+.textFieldLogin{
+-fx-background-color: transparent;
+    -fx-border-color: white;
+    -fx-border-width: 0px 0px 2px 0px;
+    -fx-prompt-text-fill:white;
+    	-fx-text-fill: white;
+}
