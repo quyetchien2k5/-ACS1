@@ -1,14 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="controller.HomeCounterController"
-            prefHeight="400.0" prefWidth="600.0">
-
+<AnchorPane fx:id="Table_Card" onMouseClicked="#Action_Table_Card" prefHeight="244.0" prefWidth="230.0" style="-fx-background-color: #5f9ea0;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.TableController">
+   <children>
+      <Label fx:id="Table_Number" alignment="CENTER" layoutX="16.0" layoutY="20.0" prefHeight="136.0" prefWidth="199.0" text="25" textFill="WHITE">
+         <font>
+            <Font name="Bauhaus 93" size="96.0" />
+         </font>
+      </Label>
+      <Label fx:id="Table_Status" layoutX="68.0" layoutY="183.0" text="Trống" textFill="WHITE">
+         <font>
+            <Font name="Arial" size="36.0" />
+         </font>
+      </Label>
+   </children>
 </AnchorPane>

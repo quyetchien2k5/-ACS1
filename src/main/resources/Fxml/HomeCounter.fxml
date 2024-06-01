@@ -50,7 +50,7 @@
                   <Font name="Bauhaus 93" size="14.0" />
                </font>
             </Label>
-            <ImageView fx:id="Back" fitHeight="31.0" fitWidth="31.0" layoutX="27.0" layoutY="28.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="Back" fitHeight="31.0" fitWidth="31.0" layoutX="27.0" layoutY="28.0" onMouseClicked="#Back_Action" pickOnBounds="true" preserveRatio="true" visible="false">
                <image>
                   <Image url="@../Image/Icon/arrow.png" />
                </image>
@@ -69,7 +69,7 @@
       </AnchorPane>
       <AnchorPane fx:id="Order_Scene" layoutY="87.0" prefHeight="602.0" prefWidth="1197.0">
          <children>
-            <AnchorPane layoutX="-2.0" layoutY="3.0" prefHeight="596.0" prefWidth="1198.0">
+            <AnchorPane fx:id="Menu_Scene" layoutX="-2.0" layoutY="3.0" prefHeight="596.0" prefWidth="1198.0">
                <children>
                   <AnchorPane layoutX="861.0" layoutY="14.0" prefHeight="557.0" prefWidth="317.0" style="-fx-background-color: #5f9ea0; -fx-background-radius: 20px;">
                      <children>
@@ -87,7 +87,7 @@
                               <Font name="Bauhaus 93" size="18.0" />
                            </font>
                         </Label>
-                        <Label layoutX="73.0" layoutY="378.0" prefHeight="20.0" prefWidth="230.0" textFill="WHITE">
+                        <Label fx:id="Bill_Total" layoutX="72.0" layoutY="398.0" prefHeight="20.0" prefWidth="230.0" textFill="WHITE">
                            <font>
                               <Font name="Bauhaus 93" size="18.0" />
                            </font>
@@ -103,9 +103,9 @@
                   </Label>
                </children>
             </AnchorPane>
-            <AnchorPane layoutY="10.0" prefHeight="589.0" prefWidth="1198.0" visible="false">
+            <AnchorPane fx:id="Oder_Scene" layoutY="10.0" prefHeight="589.0" prefWidth="1198.0" visible="false">
                <children>
-                  <ScrollPane layoutX="27.0" layoutY="72.0" pannable="true" prefHeight="509.0" prefWidth="1153.0" />
+                  <ScrollPane fx:id="Table_List" layoutX="27.0" layoutY="72.0" pannable="true" prefHeight="509.0" prefWidth="1153.0" />
                   <Label alignment="CENTER" contentDisplay="CENTER" layoutX="333.0" prefHeight="20.0" prefWidth="541.0" text="Choose table" textFill="CADETBLUE">
                      <font>
                         <Font name="Arial Rounded MT Bold" size="48.0" />

@@ -82,6 +82,7 @@ public class DishController {
     public void Action_AddDish(MouseEvent mouseEvent) {
         System.out.println("input data bill"+ Dish_Name.getText()+ Dish_Price.getText()+ Dish_Number.getValue());
         homeCounterController.setTableBill(Integer.parseInt(Dish_Number.getValue().toString()), Dish_Name.getText(), Integer.parseInt(Dish_Price.getText()));
+        homeCounterController.calculateTotalPrice();
     }
 
 
