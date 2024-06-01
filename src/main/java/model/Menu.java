@@ -3,40 +3,38 @@ package model;
 import java.sql.Date;
 
 public class Menu {
-    private String product_id;
-    private String product_name;
+    private String id;
+    private String name;
     private String type;
-    private Integer stock;
     private String image;
-    private Date date;
+    private Double price;
 
     public Menu(){
         super();
     }
 
-    public Menu(String product_id, String product_name, String type, Integer stock, String image, Date date) {
-        this.product_id = product_id;
-        this.product_name = product_name;
+    public Menu(String id, String name, String type, String image, Double price) {
+        this.id = id;
+        this.name = name;
         this.type = type;
-        this.stock = stock;
         this.image = image;
-        this.date = date;
+        this.price = price;
     }
 
-    public String getProduct_id() {
-        return product_id;
+    public String getId() {
+        return id;
     }
 
-    public void setProduct_id(String product_id) {
-        this.product_id = product_id;
+    public void setId(String id) {
+        this.id = id;
     }
 
-    public String getProduct_name() {
-        return product_name;
+    public String getName() {
+        return name;
     }
 
-    public void setProduct_name(String product_name) {
-        this.product_name = product_name;
+    public void setName(String name) {
+        this.name = name;
     }
 
     public String getType() {
@@ -47,14 +45,6 @@ public class Menu {
         this.type = type;
     }
 
-    public Integer getStock() {
-        return stock;
-    }
-
-    public void setStock(Integer stock) {
-        this.stock = stock;
-    }
-
     public String getImage() {
         return image;
     }
@@ -63,11 +53,11 @@ public class Menu {
         this.image = image;
     }
 
-    public Date getDate() {
-        return date;
+    public Double getPrice() {
+        return price;
     }
 
-    public void setDate(Date date) {
-        this.date = date;
+    public void setPrice(Double price) {
+        this.price = price;
     }
 }

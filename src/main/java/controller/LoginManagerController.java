@@ -91,18 +91,6 @@ public class LoginManagerController implements Initializable {
 
     private Alert alert;
 
-    private String[] posList = {"Counter", "Manager", "Client"};
-
-    public void invenTypeList() {
-        List<String> typeL = new ArrayList<>();
-        for (String data : posList) {
-            typeL.add(data);
-        }
-
-        ObservableList<String> listData = FXCollections.observableArrayList(typeL);
-        re_position.setItems(listData);
-    }
-
     public void loginBtn() throws Exception {
 
         //check the email or password feild do write yet? if not, give notification error!
@@ -173,7 +161,7 @@ public class LoginManagerController implements Initializable {
 
         if (file != null) {
 
-            data.path = file.getAbsolutePath();
+            data.pathAvatar = file.getAbsolutePath();
 
             image = new Image(file.toURI().toString(), 70, 70, false, true);
 
@@ -246,8 +234,7 @@ public class LoginManagerController implements Initializable {
                 int age = Integer.parseInt(re_age.getText());
                 double salary = Double.parseDouble(re_salary.getText());
 
-                User user = new User(re_name.getText(), re_email.getText(), re_gender.getText(), age, re_password.getText(),
-                        selectedPosition, sqlDate, salary, data.path);
+                User user = new User(re_name.getText(), re_email.getText(), re_gender.getText(), age, re_password.getText(), sqlDate, null,null, salary, data.pathAvatar);
                 UserDAO.getInstance().insert(user);
                 alert = new Alert(Alert.AlertType.INFORMATION);
                 alert.setTitle("Information Message");
@@ -282,13 +269,11 @@ public class LoginManagerController implements Initializable {
         re_gender.setText("");
         re_name.setText("");
         re_salary.setText("");
-        re_position.setPromptText("Choose your position...!");
         re_startWork.setPromptText("Choose date start...!");
     }
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        invenTypeList();
         clear();
     }
 }

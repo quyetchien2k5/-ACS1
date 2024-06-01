@@ -19,8 +19,8 @@ public class UserDAO implements DAOInterface<User> {
     }
     @Override
     public void insert(User user) throws Exception {
-        String reData = "INSERT INTO user(name, email, gender, age, password, position, date, salary, avatar)"
-                + "VALUES(?,?,?,?,?,?,?,?,?)";
+        String reData = "INSERT INTO user(name, email, gender, age, password, date, job, workingdays, salary, avatar)"
+                + "VALUES(?,?,?,?,?,?,?,?,?,?)";
         connect = DatabaseConnection.getConnection();
         System.out.println(user.getName());
 
@@ -31,14 +31,16 @@ public class UserDAO implements DAOInterface<User> {
                 prepare.setString(3, user.getGender());
                 prepare.setString(4, String.valueOf(user.getAge()));
                 prepare.setString(5, data.encodePassword(user.getPassword()));
-                prepare.setString(6, user.getPosition());
 
-                prepare.setString(7, String.valueOf(user.getDate()));
-                prepare.setString(8, String.valueOf(user.getSalary()));
-                String path = data.path;
+                prepare.setString(6, String.valueOf(user.getDate()));
+        prepare.setString(7, String.valueOf(user.getJob()));
+        prepare.setString(8, String.valueOf(user.getWorkingdays()));
+
+        prepare.setString(9, String.valueOf(user.getSalary()));
+                String path = data.pathAvatar;
                 path = path.replace("\\", "\\\\");
 
-                prepare.setString(9, path);
+                prepare.setString(10, path);
 
                 prepare.executeUpdate();
 
