@@ -32,8 +32,8 @@
                    <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #8B4513;" BorderPane.alignment="CENTER">
                        <children>
                            <Button fx:id="menu_btn" layoutX="10.0" layoutY="361.0" mnemonicParsing="false" onAction="#switchForm" prefHeight="43.0" prefWidth="180.0" stylesheets="@../Css/HomeManager.css" text="MENU" />
-                           <Button fx:id="customers_btn" layoutX="10.0" layoutY="422.0" mnemonicParsing="false" onAction="#switchForm" prefHeight="43.0" prefWidth="180.0" stylesheets="@../Css/HomeManager.css" text="CUSTOMERS" />
-                           <Button fx:id="logout_btn" layoutX="10.0" layoutY="539.0" mnemonicParsing="false" prefHeight="43.0" prefWidth="180.0" stylesheets="@../Css/HomeManager.css" text="LOG OUT" />
+                           <Button fx:id="bills_btn" layoutX="10.0" layoutY="422.0" mnemonicParsing="false" onAction="#switchForm" prefHeight="43.0" prefWidth="180.0" stylesheets="@../Css/HomeManager.css" text="BILLS" />
+                           <Button fx:id="logout_btn" layoutX="10.0" layoutY="539.0" mnemonicParsing="false" onAction="#logout" prefHeight="43.0" prefWidth="180.0" stylesheets="@../Css/HomeManager.css" text="LOG OUT" />
                            <ImageView fitHeight="198.0" fitWidth="205.0" layoutX="1.0" layoutY="1.0" pickOnBounds="true" preserveRatio="true">
                                <image>
                                    <Image url="@../Image/logo.png" />
@@ -76,7 +76,7 @@
                <center>
                   <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
                       <children>
-                          <AnchorPane fx:id="dashboard_form" layoutX="196.0" layoutY="185.0" prefHeight="600.0" prefWidth="878.0" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                          <AnchorPane fx:id="dashboard_form" layoutX="196.0" layoutY="185.0" prefHeight="600.0" prefWidth="878.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                               <children>
                                   <AnchorPane layoutX="14.0" layoutY="14.0" prefHeight="169.0" prefWidth="851.0" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="13.0" AnchorPane.topAnchor="14.0">
                                       <styleClass>
@@ -92,12 +92,12 @@
                                                           <AnchorPane layoutX="6.0" layoutY="10.0" prefHeight="134.0" prefWidth="235.0" styleClass="nav-form" stylesheets="@../Css/HomeManager.css">
                                                               <children>
                                                                   <FontAwesomeIcon fill="WHITE" glyphName="USERS" layoutX="14.0" layoutY="88.0" size="5em" />
-                                                                  <Label layoutX="78.0" layoutY="97.0" text="Number of Customer" textFill="WHITE">
+                                                                  <Label layoutX="125.0" layoutY="97.0" text="Number of Bill" textFill="WHITE">
                                                                       <font>
                                                                           <Font size="15.0" />
                                                                       </font>
                                                                   </Label>
-                                                                  <Label fx:id="dashboard_NC" alignment="CENTER_RIGHT" layoutX="74.0" layoutY="14.0" prefHeight="21.0" prefWidth="147.0" text="0" textFill="WHITE">
+                                                                  <Label fx:id="dashboard_NB" alignment="CENTER_RIGHT" layoutX="74.0" layoutY="14.0" prefHeight="21.0" prefWidth="147.0" text="0" textFill="WHITE">
                                                                       <font>
                                                                           <Font size="15.0" />
                                                                       </font>
@@ -106,28 +106,28 @@
                                                           </AnchorPane>
                                                           <AnchorPane layoutX="254.0" layoutY="10.0" prefHeight="134.0" prefWidth="252.0" styleClass="nav-form" stylesheets="@../Css/HomeManager.css">
                                                               <children>
-                                                                  <FontAwesomeIcon fill="WHITE" glyphName="DOLLAR" layoutX="14.0" layoutY="88.0" size="5em" />
-                                                                  <Label layoutX="78.0" layoutY="97.0" text="Today's Income" textFill="WHITE">
+                                                                  <Label layoutX="134.0" layoutY="97.0" text="Today's Income" textFill="WHITE">
                                                                       <font>
                                                                           <Font size="15.0" />
                                                                       </font>
                                                                   </Label>
-                                                                  <Label fx:id="dashboard_TI" alignment="CENTER_RIGHT" layoutX="91.0" layoutY="14.0" prefHeight="21.0" prefWidth="147.0" text="\$0.0" textFill="WHITE">
+                                                                  <Label fx:id="dashboard_TI" alignment="CENTER_RIGHT" layoutX="91.0" layoutY="14.0" prefHeight="21.0" prefWidth="147.0" text="0 VND" textFill="WHITE">
                                                                       <font>
                                                                           <Font size="15.0" />
                                                                       </font>
                                                                   </Label>
+                                                      <FontAwesomeIcon fill="WHITE" glyphName="MONEY" layoutX="14.0" layoutY="88.0" size="5em" />
                                                               </children>
                                                           </AnchorPane>
                                                           <AnchorPane layoutX="517.0" layoutY="10.0" prefHeight="134.0" prefWidth="252.0" styleClass="nav-form" stylesheets="@../Css/HomeManager.css">
                                                               <children>
                                                                   <FontAwesomeIcon fill="WHITE" glyphName="MONEY" layoutX="14.0" layoutY="88.0" size="5em" />
-                                                                  <Label layoutX="104.0" layoutY="97.0" text="Total Income" textFill="WHITE">
+                                                                  <Label layoutX="151.0" layoutY="97.0" text="Total Income" textFill="WHITE">
                                                                       <font>
                                                                           <Font size="15.0" />
                                                                       </font>
                                                                   </Label>
-                                                                  <Label fx:id="dashboard_TotalI" alignment="CENTER_RIGHT" layoutX="91.0" layoutY="14.0" prefHeight="21.0" prefWidth="147.0" text="\$0.0" textFill="WHITE">
+                                                                  <Label fx:id="dashboard_TotalI" alignment="CENTER_RIGHT" layoutX="91.0" layoutY="14.0" prefHeight="21.0" prefWidth="147.0" text="0 VND" textFill="WHITE">
                                                                       <font>
                                                                           <Font size="15.0" />
                                                                       </font>
@@ -137,7 +137,7 @@
                                                           <AnchorPane layoutX="784.0" layoutY="10.0" prefHeight="134.0" prefWidth="252.0" styleClass="nav-form" stylesheets="@../Css/HomeManager.css">
                                                               <children>
                                                                   <FontAwesomeIcon fill="WHITE" glyphName="SHOPPING_CART" layoutX="14.0" layoutY="88.0" size="5em" />
-                                                                  <Label layoutX="78.0" layoutY="97.0" text="Number of Dish Products" textFill="WHITE">
+                                                                  <Label layoutX="78.0" layoutY="97.0" text="Number of Dish Sold" textFill="WHITE">
                                                                       <font>
                                                                           <Font size="14.0" />
                                                                       </font>
@@ -186,7 +186,7 @@
                                                   <String fx:value="radius" />
                                               </styleClass>
                                               <children>
-                                                  <BarChart fx:id="dashboard_CustomerChart" layoutX="-87.0" layoutY="-70.0" prefHeight="344.0" prefWidth="413.0" title="Customer's Chart" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                                  <BarChart fx:id="dashboard_BillChart" layoutX="-87.0" layoutY="-70.0" prefHeight="344.0" prefWidth="413.0" title="Customer's Chart" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                                       <xAxis>
                                                           <CategoryAxis side="BOTTOM" />
                                                       </xAxis>
@@ -291,7 +291,7 @@
                                   <Separator layoutX="9.0" layoutY="331.0" prefHeight="0.0" prefWidth="878.0" AnchorPane.bottomAnchor="265.8" AnchorPane.leftAnchor="9.0" AnchorPane.rightAnchor="12.000000000000114" />
                               </children>
                           </AnchorPane>
-                          <AnchorPane fx:id="customers_form" layoutX="14.0" layoutY="22.0" prefHeight="600.0" prefWidth="899.2" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                          <AnchorPane fx:id="bills_form" layoutX="14.0" layoutY="22.0" prefHeight="600.0" prefWidth="899.2" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                               <children>
                                   <AnchorPane layoutX="14.0" layoutY="14.0" prefHeight="571.0" prefWidth="874.0" AnchorPane.bottomAnchor="14.0" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="14.0">
                                       <styleClass>
@@ -300,17 +300,17 @@
                                           <String fx:value="white" />
                                       </styleClass>
                                       <children>
-                                          <Label layoutX="36.0" layoutY="14.0" text="Customers" AnchorPane.leftAnchor="36.0" AnchorPane.topAnchor="14.0">
+                                          <Label layoutX="36.0" layoutY="14.0" text="Bills" AnchorPane.leftAnchor="36.0" AnchorPane.topAnchor="14.0">
                                               <font>
                                                   <Font name="Verdana" size="20.0" />
                                               </font>
                                           </Label>
-                                          <TableView fx:id="customers_table" layoutX="12.0" layoutY="43.2" prefHeight="514.0" prefWidth="850.0" tableMenuButtonVisible="true" AnchorPane.bottomAnchor="14.0" AnchorPane.leftAnchor="12.0" AnchorPane.rightAnchor="12.0" AnchorPane.topAnchor="43.0">
+                                          <TableView fx:id="bills_table" layoutX="12.0" layoutY="43.2" prefHeight="514.0" prefWidth="850.0" tableMenuButtonVisible="true" AnchorPane.bottomAnchor="14.0" AnchorPane.leftAnchor="12.0" AnchorPane.rightAnchor="12.0" AnchorPane.topAnchor="43.0">
                                               <columns>
-                                                  <TableColumn fx:id="customers_col_ID" prefWidth="106.39994430541992" text="Customer ID" />
-                                                  <TableColumn fx:id="customers_col_totals" prefWidth="160.0000457763672" text="Totals ($)" />
-                                                  <TableColumn fx:id="customers_col_date" prefWidth="200.80010986328125" text="Date" />
-                                                  <TableColumn fx:id="customers_col_cashier" prefWidth="308.79998779296875" text="Cashier" />
+                                                  <TableColumn fx:id="bills_col_ID" prefWidth="106.39994430541992" text="Bill ID" />
+                                                  <TableColumn fx:id="bills_col_table" prefWidth="160.0000457763672" text="Table" />
+                                                  <TableColumn fx:id="bills_col_total" prefWidth="200.80010986328125" text="Totals (VND)" />
+                                                  <TableColumn fx:id="bills_col_time" prefWidth="308.79998779296875" text="Time" />
                                               </columns>
                                               <columnResizePolicy>
                                                   <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
@@ -320,7 +320,7 @@
                                   </AnchorPane>
                               </children>
                           </AnchorPane>
-                        <AnchorPane fx:id="counters_form" layoutX="10.0" layoutY="10.0" prefHeight="600.0" prefWidth="899.2" stylesheets="@../Css/HomeManager.css">
+                        <AnchorPane fx:id="counters_form" layoutX="10.0" layoutY="10.0" prefHeight="600.0" prefWidth="899.2" stylesheets="@../Css/HomeManager.css" visible="false">
                            <children>
                               <AnchorPane layoutX="12.0" layoutY="6.0" prefHeight="315.0" prefWidth="876.0" AnchorPane.bottomAnchor="279.59999999999997" AnchorPane.leftAnchor="12.0" AnchorPane.rightAnchor="11.200000000000045" AnchorPane.topAnchor="6.0">
                                  <styleClass>

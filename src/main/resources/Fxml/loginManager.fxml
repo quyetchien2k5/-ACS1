@@ -13,7 +13,7 @@
 
 <AnchorPane stylesheets="@../Css/LoginManager.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.LoginManagerController">
     <children>
-      <AnchorPane fx:id="re_form" prefHeight="567.0" prefWidth="600.0">
+      <AnchorPane fx:id="re_form" prefHeight="567.0" prefWidth="600.0" visible="false">
          <children>
             <ImageView fitHeight="605.0" fitWidth="602.0" layoutX="1.0" pickOnBounds="true" preserveRatio="true" styleClass="textField">
                <image>
@@ -43,7 +43,7 @@
             </Hyperlink>
          </children>
       </AnchorPane>
-      <AnchorPane fx:id="lo_form" prefHeight="567.0" prefWidth="604.0" visible="false">
+      <AnchorPane fx:id="lo_form" prefHeight="567.0" prefWidth="604.0">
          <children>
             <ImageView fitHeight="605.0" fitWidth="602.0" layoutX="1.0" pickOnBounds="true" preserveRatio="true">
                <image>

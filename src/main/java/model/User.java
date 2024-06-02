@@ -12,7 +12,7 @@ public class User {
     private String password;
     private Date date;
 
-    private Double salary;
+    private Integer salary;
     private String avatar;
     private Date job;
     private Integer workingdays;
@@ -22,7 +22,7 @@ public class User {
         super();
     }
 
-    public User(String name, String email, String gender, Integer age, String password, Date date,Date job,Integer workingdays, Double salary, String avatar) {
+    public User(String name, String email, String gender, Integer age, String password, Date date,Date job,Integer workingdays, Integer salary, String avatar) {
         this.name = name;
         this.email = email;
         this.gender = gender;
@@ -35,7 +35,7 @@ public class User {
         this.avatar = avatar;
     }
 
-    public User(String name, Date date, Date job, Integer workingdays, Double salary, String avatar) {
+    public User(String name, Date date, Date job, Integer workingdays, Integer salary, String avatar) {
         this.name = name;
         this.date = date;
         this.salary = salary;
@@ -116,11 +116,11 @@ public class User {
         this.date = date;
     }
 
-    public Double getSalary() {
+    public Integer getSalary() {
         return salary;
     }
 
-    public void setSalary(Double salary) {
+    public void setSalary(Integer salary) {
         this.salary = salary;
     }
 

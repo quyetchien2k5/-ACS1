@@ -12,6 +12,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.chart.AreaChart;
 import javafx.scene.chart.BarChart;
+import javafx.scene.chart.XYChart;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
@@ -19,10 +20,9 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
-import model.DatabaseConnection;
+import model.*;
 import model.Menu;
-import model.User;
-import model.data;
+import view.LoginManagerView;
 
 import java.io.File;
 import java.net.URL;
@@ -93,31 +93,14 @@ public class HomeManagerController implements Initializable {
     private Button counter_updateBtn;
 
     @FXML
-    private Button customers_btn;
+    private Button bills_btn;
+
 
     @FXML
-    private TableColumn<?, ?> customers_col_ID;
+    private BarChart<?, ?> dashboard_BillChart;
 
     @FXML
-    private TableColumn<?, ?> customers_col_cashier;
-
-    @FXML
-    private TableColumn<?, ?> customers_col_date;
-
-    @FXML
-    private TableColumn<?, ?> customers_col_totals;
-
-    @FXML
-    private AnchorPane customers_form;
-
-    @FXML
-    private TableView<?> customers_table;
-
-    @FXML
-    private BarChart<?, ?> dashboard_CustomerChart;
-
-    @FXML
-    private Label dashboard_NC;
+    private Label dashboard_NB;
 
     @FXML
     private Label dashboard_NSP;
@@ -206,6 +189,22 @@ public class HomeManagerController implements Initializable {
     private TextField counter_bonus;
     @FXML
     private DatePicker counter_dateStart;
+    @FXML
+    private TableColumn<?, ?> bills_col_ID;
+
+    @FXML
+    private TableColumn<?, ?> bills_col_table;
+
+    @FXML
+    private TableColumn<?, ?> bills_col_time;
+
+    @FXML
+    private TableColumn<?, ?> bills_col_total;
+
+    @FXML
+    private AnchorPane bills_form;
+    @FXML
+    private TableView<Bill> bills_table;
 
     private Alert alert;
 
@@ -225,6 +224,135 @@ public class HomeManagerController implements Initializable {
         ObservableList<String> listData = FXCollections.observableArrayList(typeL);
         menu_Type.setItems(listData);
     }
+
+    public void dashboardDisplayNB() {
+
+        String sql = "SELECT COUNT(id) FROM bill";
+        connect = DatabaseConnection.getConnection();
+
+        try {
+            int nb = 0;
+            prepare = connect.prepareStatement(sql);
+            result = prepare.executeQuery();
+
+            if (result.next()) {
+                nb = result.getInt("COUNT(id)");
+            }
+            dashboard_NB.setText(String.valueOf(nb));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+    }
+
+    public void dashboardDisplayTI() {
+        java.util.Date date = new java.util.Date();
+        java.sql.Date sqlDate = new java.sql.Date(date.getTime());
+
+        String sql = "SELECT SUM(total) FROM bill WHERE DATE(time) = '"
+                + sqlDate + "'";
+
+        connect = DatabaseConnection.getConnection();
+
+        try {
+            Integer ti = 0;
+            prepare = connect.prepareStatement(sql);
+            result = prepare.executeQuery();
+
+            if (result.next()) {
+                ti = result.getInt("SUM(total)");
+            }
+
+            dashboard_TI.setText(ti+" VND");
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void dashboardTotalI() {
+        String sql = "SELECT SUM(total) FROM bill";
+
+        connect = DatabaseConnection.getConnection();
+
+        try {
+            Integer ti = 0;
+            prepare = connect.prepareStatement(sql);
+            result = prepare.executeQuery();
+
+            if (result.next()) {
+                ti = result.getInt("SUM(total)");
+            }
+            dashboard_TotalI.setText(ti+" VND");
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void dashboardNSP() {
+
+        String sql = "SELECT SUM(quantity) FROM bill_items";
+
+        connect = DatabaseConnection.getConnection();
+
+        try {
+            int q = 0;
+            prepare = connect.prepareStatement(sql);
+            result = prepare.executeQuery();
+
+            if (result.next()) {
+                q = result.getInt("SUM(quantity)");
+            }
+            dashboard_NSP.setText(String.valueOf(q));
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void dashboardIncomeChart() {
+        dashboard_incomeChart.getData().clear();
+
+        String sql = "SELECT DATE(time), SUM(total) FROM bill GROUP BY DATE(time) ORDER BY TIMESTAMP(DATE(time))";
+        connect = DatabaseConnection.getConnection();
+        XYChart.Series chart = new XYChart.Series();
+        try {
+            prepare = connect.prepareStatement(sql);
+            result = prepare.executeQuery();
+
+            while (result.next()) {
+                chart.getData().add(new XYChart.Data<>(result.getString(1), result.getFloat(2)));
+            }
+
+            dashboard_incomeChart.getData().add(chart);
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void dashboardBillChart(){
+        dashboard_BillChart.getData().clear();
+
+        String sql = "SELECT DATE(time), COUNT(id) FROM bill GROUP BY DATE(time) ORDER BY TIMESTAMP(DATE(time))";
+        connect = DatabaseConnection.getConnection();
+        XYChart.Series chart = new XYChart.Series();
+        try {
+            prepare = connect.prepareStatement(sql);
+            result = prepare.executeQuery();
+
+            while (result.next()) {
+                chart.getData().add(new XYChart.Data<>(result.getString(1), result.getInt(2)));
+            }
+
+            dashboard_BillChart.getData().add(chart);
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
 
     public void addMenuBtn() throws Exception {
 
@@ -496,10 +624,10 @@ public class HomeManagerController implements Initializable {
 
 // Chuyển đổi chuỗi số ngày làm việc thành kiểu int
                 int workingDays = Integer.parseInt(workingDaysText);
-                double bonus = Double.parseDouble(bonusText);
+                int bonus = Integer.parseInt(bonusText);
 
 // Tính lương tổng cộng
-                double salary = 360000 * workingDays + bonus;
+                int salary = 360000 * workingDays + bonus;
                 LocalDate localDate = counter_dateStart.getValue();
                 java.util.Date utilDate = Date.valueOf(localDate);
                 Date sqlDate = new Date(utilDate.getTime());
@@ -539,6 +667,15 @@ public class HomeManagerController implements Initializable {
             alert.showAndWait();
 
         } else {
+            String workingDaysText = counter_workingdays.getText(); // Lấy văn bản từ Label counter_workingdays
+            String bonusText = counter_bonus.getText();
+
+// Chuyển đổi chuỗi số ngày làm việc thành kiểu int
+            int workingDays = Integer.parseInt(workingDaysText);
+            int bonus = Integer.parseInt(bonusText);
+
+// Tính lương tổng cộng
+            int salary = 360000 * workingDays + bonus;
             String path = data.pathAvatar;
             path = path.replace("\\", "\\\\");
 
@@ -546,7 +683,7 @@ public class HomeManagerController implements Initializable {
                     + "name = '"
                     + counter_Name.getText()+"', date ='"
                     + counter_dateStart.getValue().toString()+"', salary = '"
-                    + Double.valueOf(counter_bonus.getText())+360000*Integer.valueOf(counter_workingdays.getText())+"', image = '"
+                    + salary+"', image = '"
                     + path + "' WHERE name = '" + data.oldCounterName+"'";
 
 
@@ -632,7 +769,7 @@ public class HomeManagerController implements Initializable {
                     result.getDate("date"),
                     result.getDate("job"),
                     result.getInt("workingdays"),
-                    result.getDouble("salary"),
+                    result.getInt("salary"),
                     result.getString("avatar"));
 
                     listData.add(user);
@@ -704,19 +841,60 @@ public class HomeManagerController implements Initializable {
         }
     }
 
+
+    public ObservableList<Bill> billsDataList() {
+
+        ObservableList<Bill> listData = FXCollections.observableArrayList();
+        String sql = "SELECT * FROM bill";
+        connect = DatabaseConnection.getConnection();
+
+        try {
+
+            prepare = connect.prepareStatement(sql);
+            result = prepare.executeQuery();
+            Bill bData;
+
+            while (result.next()) {
+                bData = new Bill(result.getInt("id"),
+                        result.getString("table_number"),
+                        result.getInt("total"),
+                        result.getDate("time"));
+
+                listData.add(bData);
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return listData;
+    }
+
+    private ObservableList<Bill> billsListData;
+
+    public void billsShowData() {
+        billsListData = billsDataList();
+
+        bills_col_ID.setCellValueFactory(new PropertyValueFactory<>("id"));
+        bills_col_table.setCellValueFactory(new PropertyValueFactory<>("table_number"));
+        bills_col_total.setCellValueFactory(new PropertyValueFactory<>("total"));
+        bills_col_time.setCellValueFactory(new PropertyValueFactory<>("time"));
+
+        bills_table.setItems(billsListData);
+    }
+
     public void switchForm(ActionEvent event) throws Exception {
 
         if (event.getSource() == dashboard_btn) {
             dashboard_form.setVisible(true);
             counters_form.setVisible(false);
             menu_form.setVisible(false);
-            customers_form.setVisible(false);
+            bills_form.setVisible(false);
 
         } else if (event.getSource() == menu_btn) {
             dashboard_form.setVisible(false);
             counters_form.setVisible(false);
             menu_form.setVisible(true);
-            customers_form.setVisible(false);
+            bills_form.setVisible(false);
 
             menuTypeList();
             menuShowData();
@@ -724,14 +902,14 @@ public class HomeManagerController implements Initializable {
             dashboard_form.setVisible(false);
             counters_form.setVisible(true);
             menu_form.setVisible(false);
-            customers_form.setVisible(false);
+            bills_form.setVisible(false);
 
             counterShowData();
-        } else if (event.getSource() == customers_btn) {
+        } else if (event.getSource() == bills_btn) {
             dashboard_form.setVisible(false);
             counters_form.setVisible(false);
             menu_form.setVisible(false);
-            customers_form.setVisible(true);
+            bills_form.setVisible(true);
         }
 
     }
@@ -751,15 +929,8 @@ public class HomeManagerController implements Initializable {
                 logout_btn.getScene().getWindow().hide();
 
                 // LINK YOUR LOGIN FORM AND SHOW IT
-                Parent root = FXMLLoader.load(getClass().getResource("..//FXML//loginManager.fxml"));
-
-                Stage stage = new Stage();
-                Scene scene = new Scene(root);
-
-                stage.setTitle("Restaurant Management System");
-
-                stage.setScene(scene);
-                stage.show();
+                LoginManagerView loginManagerView = new LoginManagerView();
+                loginManagerView.start(new Stage());
 
             }
 
@@ -775,6 +946,13 @@ public class HomeManagerController implements Initializable {
         menuTypeList();
         clearCounterBtn();
         try {
+            dashboardBillChart();
+            dashboardDisplayNB();
+            dashboardTotalI();
+            dashboardDisplayTI();
+            dashboardNSP();
+            dashboardIncomeChart();
+            billsShowData();
             menuShowData();
             counterShowData();
         } catch (Exception e) {

@@ -17,6 +17,7 @@ import javafx.stage.Stage;
 import model.DatabaseConnection;
 import model.User;
 import model.data;
+import view.HomeManagerView;
 
 import java.io.File;
 import java.net.URL;
@@ -126,16 +127,8 @@ public class LoginManagerController implements Initializable {
 
 
                 //Kết nối với giao diện chính khi đăng nhập thành công.
-                Parent root = FXMLLoader.load(getClass().getResource("/Fxml/homeManager.fxml"));
-
-                Stage stage = new Stage();
-                Scene scene = new Scene(root);
-
-
-                stage.setTitle("Login With Manager!");
-
-                stage.setScene(scene);
-                stage.show();
+                HomeManagerView homeManagerView = new HomeManagerView();
+                homeManagerView.start(new Stage());
 
                 lo_btn.getScene().getWindow().hide();
                 DatabaseConnection.closeConnect(connect);
@@ -232,7 +225,7 @@ public class LoginManagerController implements Initializable {
                 java.util.Date utilDate = Date.valueOf(localDate);
                 Date sqlDate = new Date(utilDate.getTime());
                 int age = Integer.parseInt(re_age.getText());
-                double salary = Double.parseDouble(re_salary.getText());
+                Integer salary = Integer.parseInt(re_salary.getText());
 
                 User user = new User(re_name.getText(), re_email.getText(), re_gender.getText(), age, re_password.getText(), sqlDate, null,null, salary, data.pathAvatar);
                 UserDAO.getInstance().insert(user);
