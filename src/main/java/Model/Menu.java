@@ -10,6 +10,11 @@ public class Menu {
     private String image;
     private Date date;
 
+    private String id;
+    private String name;
+    private Double price;
+
+
     public Menu(){
         super();
     }
@@ -24,20 +29,30 @@ public class Menu {
     }
 
 
-    public String getProduct_id() {
-        return product_id;
+
+    public Menu(String id, String name, String type, String image, Double price) {
+        this.id = id;
+        this.name = name;
+        this.type = type;
+        this.image = image;
+        this.price = price;
     }
 
-    public void setProduct_id(String product_id) {
-        this.product_id = product_id;
+    public String getId() {
+        return id;
     }
 
-    public String getProduct_name() {
-        return product_name;
+    public void setId(String id) {
+        this.id = id;
     }
 
-    public void setProduct_name(String product_name) {
-        this.product_name = product_name;
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+
     }
 
     public String getType() {
@@ -47,6 +62,7 @@ public class Menu {
     public void setType(String type) {
         this.type = type;
     }
+
 
     public Integer getStock() {
         return stock;
@@ -64,6 +80,7 @@ public class Menu {
         this.image = image;
     }
 
+
     public Date getDate() {
         return date;
     }
@@ -71,4 +88,13 @@ public class Menu {
     public void setDate(Date date) {
         this.date = date;
     }
+    public Double getPrice() {
+        return price;
+    }
+
+    public void setPrice(Double price) {
+        this.price = price;
+
+    }
+
 }

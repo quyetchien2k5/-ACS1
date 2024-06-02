@@ -15,12 +15,19 @@ public class User {
 
     private Double salary;
     private String avatar;
+    private Date job;
+    private Integer workingdays;
+
+
     public User()
     {
         super();
     }
 
-    public User(String name, String email, String gender, Integer age, String password, String position, Date date, Double salary, String avatar) {
+
+
+    public User(String name, String email, String gender, Integer age, String password, Date date,Date job,Integer workingdays, Double salary, String avatar) {
+
         this.name = name;
         this.email = email;
         this.gender = gender;
@@ -28,8 +35,36 @@ public class User {
         this.password = password;
         this.position = position;
         this.date = date;
+        this.job = job;
+        this.workingdays = workingdays;
         this.salary = salary;
         this.avatar = avatar;
+    }
+
+    public User(String name, Date date, Date job, Integer workingdays, Double salary, String avatar) {
+        this.name = name;
+        this.date = date;
+        this.salary = salary;
+        this.avatar = avatar;
+        this.job = job;
+        this.workingdays = workingdays;
+    }
+
+    public Date getJob() {
+        return job;
+    }
+
+    public void setJob(Date job) {
+        this.job = job;
+    }
+
+    public Integer getWorkingdays() {
+        return workingdays;
+    }
+
+    public void setWorkingdays(Integer workingdays) {
+        this.workingdays = workingdays;
+
     }
 
     public String getName() {
@@ -95,10 +130,6 @@ public class User {
     public void setPosition(String position) {
         this.position = position;
     }
-
-
-
-
 
     public Double getSalary() {
         return salary;

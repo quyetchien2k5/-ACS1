@@ -15,39 +15,14 @@
    <children>
       <AnchorPane layoutX="9.0" prefHeight="87.0" prefWidth="1191.0" style="-fx-background-color: #5f9ea0; -fx-background-radius: 0px 0px 20px 20px; -fx-border-radius: 0px 0px 20px 20px;">
          <children>
-            <ImageView fx:id="HomeCounter__Ship" fitHeight="48.0" fitWidth="48.0" layoutX="650.0" layoutY="9.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../Image/Icon/motorbike.png" />
-               </image>
-            </ImageView>
-            <ImageView fx:id="HomeCounter__Online" fitHeight="48.0" fitWidth="48.0" layoutX="518.0" layoutY="9.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../Image/Icon/shopping-app.png" />
-               </image>
-            </ImageView>
-            <ImageView fx:id="HomeCounter__Order" fitHeight="49.0" fitWidth="48.0" layoutX="374.0" layoutY="9.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../Image/Icon/counter.png" />
-               </image>
-            </ImageView>
             <ImageView fx:id="Off" fitHeight="41.0" fitWidth="38.0" layoutX="1138.0" layoutY="25.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../Image/Icon/turn-off.png" />
                </image>
             </ImageView>
-            <Label layoutX="382.0" layoutY="61.0" text="Oder" textFill="WHITE">
+            <Label layoutX="268.0" layoutY="3.0" prefHeight="82.0" prefWidth="655.0" text="Nhân viên bán hàng" textFill="WHITE">
                <font>
-                  <Font name="Bauhaus 93" size="14.0" />
-               </font>
-            </Label>
-            <Label layoutX="521.0" layoutY="61.0" text="Online" textFill="WHITE">
-               <font>
-                  <Font name="Bauhaus 93" size="14.0" />
-               </font>
-            </Label>
-            <Label layoutX="661.0" layoutY="61.0" text="Ship" textFill="WHITE">
-               <font>
-                  <Font name="Bauhaus 93" size="14.0" />
+                  <Font name="Bauhaus 93" size="72.0" />
                </font>
             </Label>
             <ImageView fx:id="Back" fitHeight="31.0" fitWidth="31.0" layoutX="27.0" layoutY="28.0" onMouseClicked="#Back_Action" pickOnBounds="true" preserveRatio="true" visible="false">
@@ -55,16 +30,6 @@
                   <Image url="@../Image/Icon/arrow.png" />
                </image>
             </ImageView>
-            <ImageView fx:id="HomeCounter__Pass" fitHeight="48.0" fitWidth="42.0" layoutX="776.0" layoutY="12.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../Image/Icon/time-past.png" />
-               </image>
-            </ImageView>
-            <Label layoutX="784.0" layoutY="61.0" text="Pass" textFill="WHITE">
-               <font>
-                  <Font name="Bauhaus 93" size="14.0" />
-               </font>
-            </Label>
          </children>
       </AnchorPane>
       <AnchorPane fx:id="Order_Scene" layoutY="87.0" prefHeight="602.0" prefWidth="1197.0">
@@ -111,7 +76,7 @@
                         <Font name="Arial Rounded MT Bold" size="48.0" />
                      </font>
                   </Label>
-                  <Button alignment="BASELINE_LEFT" layoutX="994.0" layoutY="7.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="160.0" style="-fx-background-color: #5f9ea0;" text="Take home" textFill="WHITE">
+                  <Button alignment="BASELINE_LEFT" layoutX="994.0" layoutY="7.0" mnemonicParsing="false" onAction="#Take_Home" prefHeight="42.0" prefWidth="160.0" style="-fx-background-color: #5f9ea0;" text="Take home" textFill="WHITE">
                      <font>
                         <Font name="Arial Rounded MT Bold" size="18.0" />
                      </font>

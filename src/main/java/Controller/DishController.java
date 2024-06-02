@@ -48,7 +48,7 @@ public class DishController {
             while (resultSet.next()) {
                 DishModel dishModel = new DishModel();
 
-                dishModel.setIdProduct(resultSet.getInt("id"));
+                dishModel.setIdProduct(resultSet.getString("id"));
                 dishModel.setNameProduct(resultSet.getString("name"));
                 dishModel.setPrice(resultSet.getInt("price"));
                 dishModel.setImage(resultSet.getString("image"));
@@ -67,12 +67,19 @@ public class DishController {
         System.out.println(modelProduct.getNameProduct());
 
         try {
-            String imagePathproduct = modelProduct.getImage(); // Lấy đường dẫn từ CSDL
-            Image image = new Image(imagePathproduct);
+            // Giả sử product.getImagePath() trả về đường dẫn tới hình ảnh
+            String imagePath = modelProduct.getImage();
+
+            // Kiểm tra xem đường dẫn có hợp lệ không và có cần điều chỉnh không
+            if (!imagePath.startsWith("file:///")) {
+                imagePath = "file:///" + imagePath;
+            }
+
+            Image image = new Image(imagePath);
             Dish_Image.setImage(image);
-            Dish_Image.setPreserveRatio(true); // Đảm bảo tỷ lệ khung hình được bảo toàn
-        } catch (IllegalArgumentException e) {
-            e.printStackTrace(); // Xử lý hoặc ghi nhận ngoại lệ một cách thích hợp
+        } catch (Exception e) {
+            e.printStackTrace();
+            // Xử lý lỗi nếu có
         }
         // Thiết lập giá trị Spinner
         SpinnerValueFactory<Integer> valueFactory = new SpinnerValueFactory.IntegerSpinnerValueFactory(1, 10, 1);

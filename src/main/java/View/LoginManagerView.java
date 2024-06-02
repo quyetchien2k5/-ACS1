@@ -13,9 +13,7 @@ public class LoginManagerView extends Application {
         try {
             Parent root = FXMLLoader.load(getClass().getResource("/Fxml/loginManager.fxml"));
             Scene scene = new Scene(root);
-
             stage.setResizable(false);
-
             stage.setScene(scene);
             stage.show();
         } catch(Exception e) {
