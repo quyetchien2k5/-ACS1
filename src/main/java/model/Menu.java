@@ -3,6 +3,7 @@ package model;
 import java.sql.Date;
 
 public class Menu {
+
     private String product_id;
     private String product_name;
     private String type;
@@ -18,6 +19,7 @@ public class Menu {
     public Menu(){
         super();
     }
+
 
     public Menu(String product_id, String product_name, String type, Integer stock, String image, Date date) {
         this.product_id = product_id;
@@ -64,6 +66,7 @@ public class Menu {
     }
 
 
+
     public Integer getStock() {
         return stock;
     }
@@ -71,6 +74,7 @@ public class Menu {
     public void setStock(Integer stock) {
         this.stock = stock;
     }
+
 
     public String getImage() {
         return image;
@@ -81,6 +85,7 @@ public class Menu {
     }
 
 
+
     public Date getDate() {
         return date;
     }
@@ -88,6 +93,7 @@ public class Menu {
     public void setDate(Date date) {
         this.date = date;
     }
+
     public Double getPrice() {
         return price;
     }

@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon?>
 
 <?import java.lang.String?>
 <?import javafx.geometry.Insets?>
@@ -92,6 +93,8 @@
                                                           <AnchorPane layoutX="6.0" layoutY="10.0" prefHeight="134.0" prefWidth="235.0" styleClass="nav-form" stylesheets="@../Css/HomeManager.css">
                                                               <children>
 
+                                                                  <FontAwesomeIcon fill="WHITE" glyphName="USERS" layoutX="14.0" layoutY="88.0" size="5em" />
+
                                                                   <Label layoutX="78.0" layoutY="97.0" text="Number of Customer" textFill="WHITE">
                                                                       <font>
                                                                           <Font size="15.0" />
@@ -106,6 +109,8 @@
                                                           </AnchorPane>
                                                           <AnchorPane layoutX="254.0" layoutY="10.0" prefHeight="134.0" prefWidth="252.0" styleClass="nav-form" stylesheets="@../Css/HomeManager.css">
                                                               <children>
+
+                                                                  <FontAwesomeIcon fill="WHITE" glyphName="DOLLAR" layoutX="14.0" layoutY="88.0" size="5em" />
 
                                                                   <Label layoutX="78.0" layoutY="97.0" text="Today's Income" textFill="WHITE">
                                                                       <font>
@@ -122,6 +127,8 @@
                                                           <AnchorPane layoutX="517.0" layoutY="10.0" prefHeight="134.0" prefWidth="252.0" styleClass="nav-form" stylesheets="@../Css/HomeManager.css">
                                                               <children>
 
+                                                                  <FontAwesomeIcon fill="WHITE" glyphName="MONEY" layoutX="14.0" layoutY="88.0" size="5em" />
+
                                                                   <Label layoutX="104.0" layoutY="97.0" text="Total Income" textFill="WHITE">
                                                                       <font>
                                                                           <Font size="15.0" />
@@ -136,6 +143,8 @@
                                                           </AnchorPane>
                                                           <AnchorPane layoutX="784.0" layoutY="10.0" prefHeight="134.0" prefWidth="252.0" styleClass="nav-form" stylesheets="@../Css/HomeManager.css">
                                                               <children>
+
+                                                                  <FontAwesomeIcon fill="WHITE" glyphName="SHOPPING_CART" layoutX="14.0" layoutY="88.0" size="5em" />
 
                                                                   <Label layoutX="78.0" layoutY="97.0" text="Number of Dish Products" textFill="WHITE">
                                                                       <font>

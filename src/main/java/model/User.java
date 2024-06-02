@@ -10,6 +10,7 @@ public class User {
     private String gender;
     private Integer age;
     private String password;
+
     private String position;
     private Date date;
 
@@ -18,11 +19,11 @@ public class User {
     private Date job;
     private Integer workingdays;
 
-
     public User()
     {
         super();
     }
+
 
 
 
@@ -33,7 +34,9 @@ public class User {
         this.gender = gender;
         this.age = age;
         this.password = password;
+
         this.position = position;
+
         this.date = date;
         this.job = job;
         this.workingdays = workingdays;
@@ -64,7 +67,6 @@ public class User {
 
     public void setWorkingdays(Integer workingdays) {
         this.workingdays = workingdays;
-
     }
 
     public String getName() {

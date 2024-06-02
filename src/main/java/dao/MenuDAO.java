@@ -1,5 +1,7 @@
 package dao;
+
 import model.Menu;
+
 
 
 import model.DatabaseConnection;
@@ -20,9 +22,11 @@ public class MenuDAO implements DAOInterface<Menu> {
     private ResultSet result;
 
 
-    public static MenuDAO getInstance() {
-            return new MenuDAO();
-        }
+
+
+    public static MenuDAO getInstance(){
+        return new MenuDAO();
+    }
 
     @Override
     public void insert(Menu menu) throws SQLException {
@@ -43,8 +47,7 @@ public class MenuDAO implements DAOInterface<Menu> {
         prepare.setString(5, String.valueOf(menu.getPrice()));
 
         prepare.executeUpdate();
-
-    }
+  }
 
     @Override
     public void update(Menu menu) {

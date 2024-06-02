@@ -43,6 +43,7 @@ public class UserDAO implements DAOInterface<User> {
                 path = path.replace("\\", "\\\\");
 
                 prepare.setString(10, path);
+
                 prepare.executeUpdate();
 
                 DatabaseConnection.closeConnect(connect);

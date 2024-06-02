@@ -1,5 +1,6 @@
 package controller;
 
+
 import model.DatabaseConnection;
 import view.LoginCounterView;
 import view.HomeCounterView;
@@ -16,7 +17,6 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import javafx.stage.Stage;
-
 
 public class LoginCounterController {
     private static final String EMAIL_REGEX = "^[A-Za-z0-9+_.-]+@[A-Za-z0-9.-]+$";
