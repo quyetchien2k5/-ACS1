@@ -19,7 +19,9 @@ public class LoginManagerView extends Application {
             stage.getIcons().add(image);
             stage.setTitle("Restaurant Management System");
 
+
             stage.setResizable(false);
+
 
             stage.setScene(scene);
             stage.show();

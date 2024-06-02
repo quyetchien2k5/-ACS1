@@ -10,12 +10,14 @@ import java.io.IOException;
 
 public class LoginCounterView extends Application {
 
+    Stage stage = new Stage();
     public static void main(String[] args) {
         launch(args);
     }
 
     @Override
-    public void start(Stage stage) throws IOException {
+    public void start(Stage primaryStage) throws IOException {
+        this.stage = primaryStage;
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/Fxml/LoginCounter.fxml"));
         Parent root = loader.load();
         Scene scene = new Scene(root, 600, 372);
@@ -24,5 +26,10 @@ public class LoginCounterView extends Application {
         stage.setTitle("Login");
         stage.show();
 
+    }
+
+    @Override
+    public void stop() throws Exception {
+        stage.close();
     }
 }

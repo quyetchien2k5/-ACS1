@@ -3,15 +3,34 @@ package model;
 import java.sql.Date;
 
 public class Menu {
+
+    private String product_id;
+    private String product_name;
+    private String type;
+    private Integer stock;
+    private String image;
+    private Date date;
+
     private String id;
     private String name;
-    private String type;
-    private String image;
     private Double price;
+
 
     public Menu(){
         super();
     }
+
+
+    public Menu(String product_id, String product_name, String type, Integer stock, String image, Date date) {
+        this.product_id = product_id;
+        this.product_name = product_name;
+        this.type = type;
+        this.stock = stock;
+        this.image = image;
+        this.date = date;
+    }
+
+
 
     public Menu(String id, String name, String type, String image, Double price) {
         this.id = id;
@@ -35,6 +54,7 @@ public class Menu {
 
     public void setName(String name) {
         this.name = name;
+
     }
 
     public String getType() {
@@ -45,6 +65,17 @@ public class Menu {
         this.type = type;
     }
 
+
+
+    public Integer getStock() {
+        return stock;
+    }
+
+    public void setStock(Integer stock) {
+        this.stock = stock;
+    }
+
+
     public String getImage() {
         return image;
     }
@@ -53,11 +84,23 @@ public class Menu {
         this.image = image;
     }
 
+
+
+    public Date getDate() {
+        return date;
+    }
+
+    public void setDate(Date date) {
+        this.date = date;
+    }
+
     public Double getPrice() {
         return price;
     }
 
     public void setPrice(Double price) {
         this.price = price;
+
     }
+
 }

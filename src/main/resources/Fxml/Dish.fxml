@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Spinner?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="250.0" prefWidth="200.0" style="-fx-background-color: #5f9ea0; -fx-border-color: green;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.DishController">
+   <children>
+      <ImageView fx:id="Dish_Image" fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
+      <Label fx:id="Dish_Name" alignment="CENTER" contentDisplay="CENTER" layoutY="150.0" prefHeight="22.0" prefWidth="200.0" textFill="WHITE">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Label fx:id="Dish_Price" alignment="CENTER" contentDisplay="CENTER" layoutX="58.0" layoutY="177.0" prefHeight="27.0" prefWidth="136.0" textFill="#ae4a4a">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Label>
+      <Label alignment="CENTER" contentDisplay="CENTER" layoutY="177.0" prefHeight="27.0" prefWidth="62.0" text="Price:" textFill="WHITE">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Spinner fx:id="Dish_Number" layoutX="14.0" layoutY="211.0" prefHeight="25.0" prefWidth="104.0" />
+      <ImageView fx:id="Dish_Add" fitHeight="35.0" fitWidth="37.0" layoutX="140.0" layoutY="206.0" onMouseClicked="#Action_AddDish" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../Image/Icon/add%20(1).png" />
+         </image>
+      </ImageView>
+   </children>
+</AnchorPane>

@@ -409,8 +409,7 @@ public class HomeManagerController implements Initializable {
                 clearMenuBtn();
 
             }
-
-        }
+       }
     }
     public void updateMenuBtn() throws Exception {
 

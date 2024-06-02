@@ -1,5 +1,8 @@
 package controller;
 
+
+import model.DatabaseConnection;
+import view.LoginCounterView;
 import view.HomeCounterView;
 import javafx.event.ActionEvent;
 import javafx.scene.control.Button;
@@ -14,7 +17,6 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import javafx.stage.Stage;
-import model.DatabaseConnection;
 
 public class LoginCounterController {
     private static final String EMAIL_REGEX = "^[A-Za-z0-9+_.-]+@[A-Za-z0-9.-]+$";
@@ -83,6 +85,10 @@ public class LoginCounterController {
                 if (rs.next()) {
                     HomeCounterView homeCounterView = new HomeCounterView();
                     homeCounterView.start(new Stage());
+                    LoginCounterView loginCounterView = new LoginCounterView();
+                    HomeCounterController homeCounterController = new HomeCounterController();
+                    homeCounterController.loadMenu();
+                    loginCounterView.stop();
                 }else{
                     SignIn__Error_Password.setText("Tài khoản mật khẩu không hợp lệ");
                 }

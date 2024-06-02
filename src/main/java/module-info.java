@@ -7,6 +7,8 @@ module main.java {
     requires com.almasb.fxgl.all;
     requires mysql.connector.j;
     requires java.sql;
+    requires java.desktop;
+
 
     opens view to javafx.fxml;
     opens controller to javafx.fxml;
@@ -14,4 +16,5 @@ module main.java {
     exports view;
     exports controller;
     exports model;
+
 }

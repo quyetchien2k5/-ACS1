@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon?>
+
 <?import java.lang.String?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.chart.AreaChart?>
@@ -91,8 +92,14 @@
                                                       <children>
                                                           <AnchorPane layoutX="6.0" layoutY="10.0" prefHeight="134.0" prefWidth="235.0" styleClass="nav-form" stylesheets="@../Css/HomeManager.css">
                                                               <children>
+
                                                                   <FontAwesomeIcon fill="WHITE" glyphName="USERS" layoutX="14.0" layoutY="88.0" size="5em" />
+<<<<<<< HEAD
                                                                   <Label layoutX="125.0" layoutY="97.0" text="Number of Bill" textFill="WHITE">
+=======
+
+                                                                  <Label layoutX="78.0" layoutY="97.0" text="Number of Customer" textFill="WHITE">
+>>>>>>> c4cc5499febf0b908898f390efbfa2591aa5ef54
                                                                       <font>
                                                                           <Font size="15.0" />
                                                                       </font>
@@ -106,7 +113,14 @@
                                                           </AnchorPane>
                                                           <AnchorPane layoutX="254.0" layoutY="10.0" prefHeight="134.0" prefWidth="252.0" styleClass="nav-form" stylesheets="@../Css/HomeManager.css">
                                                               <children>
+<<<<<<< HEAD
                                                                   <Label layoutX="134.0" layoutY="97.0" text="Today's Income" textFill="WHITE">
+=======
+
+                                                                  <FontAwesomeIcon fill="WHITE" glyphName="DOLLAR" layoutX="14.0" layoutY="88.0" size="5em" />
+
+                                                                  <Label layoutX="78.0" layoutY="97.0" text="Today's Income" textFill="WHITE">
+>>>>>>> c4cc5499febf0b908898f390efbfa2591aa5ef54
                                                                       <font>
                                                                           <Font size="15.0" />
                                                                       </font>
@@ -121,8 +135,14 @@
                                                           </AnchorPane>
                                                           <AnchorPane layoutX="517.0" layoutY="10.0" prefHeight="134.0" prefWidth="252.0" styleClass="nav-form" stylesheets="@../Css/HomeManager.css">
                                                               <children>
+
                                                                   <FontAwesomeIcon fill="WHITE" glyphName="MONEY" layoutX="14.0" layoutY="88.0" size="5em" />
+<<<<<<< HEAD
                                                                   <Label layoutX="151.0" layoutY="97.0" text="Total Income" textFill="WHITE">
+=======
+
+                                                                  <Label layoutX="104.0" layoutY="97.0" text="Total Income" textFill="WHITE">
+>>>>>>> c4cc5499febf0b908898f390efbfa2591aa5ef54
                                                                       <font>
                                                                           <Font size="15.0" />
                                                                       </font>
@@ -136,8 +156,14 @@
                                                           </AnchorPane>
                                                           <AnchorPane layoutX="784.0" layoutY="10.0" prefHeight="134.0" prefWidth="252.0" styleClass="nav-form" stylesheets="@../Css/HomeManager.css">
                                                               <children>
+
                                                                   <FontAwesomeIcon fill="WHITE" glyphName="SHOPPING_CART" layoutX="14.0" layoutY="88.0" size="5em" />
+<<<<<<< HEAD
                                                                   <Label layoutX="78.0" layoutY="97.0" text="Number of Dish Sold" textFill="WHITE">
+=======
+
+                                                                  <Label layoutX="78.0" layoutY="97.0" text="Number of Dish Products" textFill="WHITE">
+>>>>>>> c4cc5499febf0b908898f390efbfa2591aa5ef54
                                                                       <font>
                                                                           <Font size="14.0" />
                                                                       </font>

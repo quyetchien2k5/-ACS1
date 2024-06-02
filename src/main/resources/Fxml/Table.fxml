@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="Table_Card" prefHeight="244.0" prefWidth="230.0" style="-fx-background-color: #5f9ea0;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.TableController">
+   <children>
+      <Label fx:id="Table_Number" alignment="CENTER" layoutX="16.0" layoutY="20.0" onMouseClicked="#Action_Table_Card" prefHeight="136.0" prefWidth="199.0" text="25" textFill="WHITE">
+         <font>
+            <Font name="Bauhaus 93" size="96.0" />
+         </font>
+      </Label>
+      <Label fx:id="Table_Status" alignment="CENTER" contentDisplay="CENTER" layoutX="7.0" layoutY="182.0" prefHeight="42.0" prefWidth="216.0" text="Trống" textFill="WHITE">
+         <font>
+            <Font name="Arial" size="36.0" />
+         </font>
+      </Label>
+      <ImageView fitHeight="42.0" fitWidth="40.0" layoutX="176.0" layoutY="14.0" onMouseClicked="#reloadTable" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../Image/Icon/sync.png" />
+         </image>
+      </ImageView>
+   </children>
+</AnchorPane>

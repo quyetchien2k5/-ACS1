@@ -92,6 +92,19 @@ public class LoginManagerController implements Initializable {
 
     private Alert alert;
 
+
+    private String[] posList = {"Counter", "Manager", "Client"};
+
+    public void invenTypeList() {
+        List<String> typeL = new ArrayList<>();
+        for (String data : posList) {
+            typeL.add(data);
+        }
+
+        ObservableList<String> listData = FXCollections.observableArrayList(typeL);
+        re_position.setItems(listData);
+    }
+
     public void loginBtn() throws Exception {
 
         //check the email or password feild do write yet? if not, give notification error!
@@ -262,12 +275,18 @@ public class LoginManagerController implements Initializable {
         re_gender.setText("");
         re_name.setText("");
         re_salary.setText("");
+
+        re_position.setPromptText("Choose your position...!");
+
+
         re_startWork.setPromptText("Choose date start...!");
-    }
+   }
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        clear();
+
+        invenTypeList();
+      clear();
     }
 }
 

@@ -19,8 +19,10 @@ public class UserDAO implements DAOInterface<User> {
     }
     @Override
     public void insert(User user) throws Exception {
+
         String reData = "INSERT INTO user(name, email, gender, age, password, date, job, workingdays, salary, avatar)"
                 + "VALUES(?,?,?,?,?,?,?,?,?,?)";
+
         connect = DatabaseConnection.getConnection();
         System.out.println(user.getName());
 
