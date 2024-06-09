@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon?>
 <?import java.lang.String?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.chart.AreaChart?>
@@ -22,7 +23,6 @@
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.text.Font?>
 
-<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon?>
 <StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1100.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.HomeManagerController">
     <children>
         <AnchorPane fx:id="main_form" prefHeight="200.0" prefWidth="200.0">
@@ -280,7 +280,7 @@
                                                         <Font name="Verdana" size="12.0" />
                                                     </font>
                                                 </TextField>
-                                                <Button fx:id="menu_searchBtn" layoutX="38.0" layoutY="119.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="106.0" styleClass="btn" stylesheets="@../Css/HomeManager.css" text="Search" />
+                                                <Button fx:id="menu_searchBtn" layoutX="38.0" layoutY="119.0" mnemonicParsing="false" onAction="#searchMenuBtn" prefHeight="31.0" prefWidth="106.0" styleClass="btn" stylesheets="@../Css/HomeManager.css" text="Search" />
                                             </children>
                                             <styleClass>
                                                 <String fx:value="radius" />
@@ -343,7 +343,7 @@
                                                 </TableView>
                                             </children>
                                         </AnchorPane>
-                                        <AnchorPane prefHeight="252.0" prefWidth="876.0" AnchorPane.bottomAnchor="6.0" AnchorPane.leftAnchor="12.0" AnchorPane.rightAnchor="11.0">
+                                        <AnchorPane layoutX="11.2" layoutY="339.79999999999995" prefHeight="252.0" prefWidth="876.0" AnchorPane.bottomAnchor="8.200000000000045" AnchorPane.leftAnchor="11.2" AnchorPane.rightAnchor="12.0">
                                             <children>
                                                 <Label layoutX="31.0" layoutY="14.0" text="Name:">
                                                     <font>
@@ -355,7 +355,7 @@
                                                         <Font name="Verdana" size="12.0" />
                                                     </font>
                                                 </TextField>
-                                                <Label layoutX="31.0" layoutY="49.0" text="Working days:">
+                                                <Label layoutX="31.0" layoutY="81.0" text="Working days:">
                                                     <font>
                                                         <Font name="Verdana" size="12.0" />
                                                     </font>
@@ -365,7 +365,7 @@
                                                         <Font name="Verdana" size="12.0" />
                                                     </font>
                                                 </Label>
-                                                <Label layoutX="324.0" layoutY="86.0" text="Salary:">
+                                                <Label layoutX="324.0" layoutY="118.0" text="Salary:">
                                                     <font>
                                                         <Font name="Verdana" size="12.0" />
                                                     </font>
@@ -379,32 +379,44 @@
                                                         <ImageView fx:id="counter_image" fitHeight="130.0" fitWidth="120.0" pickOnBounds="true" preserveRatio="true" AnchorPane.rightAnchor="0.0" />
                                                     </children>
                                                 </AnchorPane>
-                                                <Button fx:id="counter_addBtn" layoutX="38.0" layoutY="171.0" mnemonicParsing="false" onAction="#addCounterBtn" prefHeight="31.0" prefWidth="106.0" styleClass="btn" text="Add" AnchorPane.bottomAnchor="50.0" />
-                                                <Button fx:id="counter_updateBtn" layoutX="183.0" layoutY="171.0" mnemonicParsing="false" onAction="#updateCounterBtn" prefHeight="31.0" prefWidth="106.0" styleClass="btn" text="Update" AnchorPane.bottomAnchor="50.0" />
-                                                <Button fx:id="counter_clearBtn" layoutX="324.0" layoutY="171.0" mnemonicParsing="false" onAction="#clearCounterBtn" prefHeight="31.0" prefWidth="106.0" styleClass="btn" text="Clear" AnchorPane.bottomAnchor="50.0" />
+                                                <Button fx:id="counter_addBtn" layoutX="38.0" layoutY="201.8" mnemonicParsing="false" onAction="#addCounterBtn" prefHeight="31.0" prefWidth="106.0" styleClass="btn" text="Add" AnchorPane.bottomAnchor="19.0" />
+                                                <Button fx:id="counter_updateBtn" layoutX="183.0" layoutY="201.8" mnemonicParsing="false" onAction="#updateCounterBtn" prefHeight="31.0" prefWidth="106.0" styleClass="btn" text="Update" AnchorPane.bottomAnchor="19.0" />
+                                                <Button fx:id="counter_clearBtn" layoutX="324.0" layoutY="201.8" mnemonicParsing="false" onAction="#clearCounterBtn" prefHeight="31.0" prefWidth="106.0" styleClass="btn" text="Clear" AnchorPane.bottomAnchor="19.0" />
                                                 <Button fx:id="counter_importbtn" layoutX="720.0" layoutY="170.0" mnemonicParsing="false" onAction="#importCounterBtn" prefHeight="31.0" prefWidth="106.0" styleClass="btn" text="Import" AnchorPane.rightAnchor="49.6" />
-                                                <Button fx:id="counter_deleteBtn" layoutX="461.0" layoutY="171.0" mnemonicParsing="false" onAction="#deleteCounterBtn" prefHeight="31.0" prefWidth="106.0" styleClass="btn" text="Delete" AnchorPane.bottomAnchor="50.0" />
-                                                <TextField fx:id="counter_Search" layoutX="178.0" layoutY="125.0" prefHeight="30.0" prefWidth="391.0" promptText="Type to search...">
+                                                <Button fx:id="counter_deleteBtn" layoutX="461.0" layoutY="201.8" mnemonicParsing="false" onAction="#deleteCounterBtn" prefHeight="31.0" prefWidth="106.0" styleClass="btn" text="Delete" AnchorPane.bottomAnchor="19.0" />
+                                                <TextField fx:id="counter_Search" layoutX="178.0" layoutY="153.0" prefHeight="30.0" prefWidth="391.0" promptText="Type to search...">
                                                     <font>
                                                         <Font name="Verdana" size="12.0" />
                                                     </font>
                                                 </TextField>
-                                                <Button fx:id="counter_searchBtn" layoutX="38.0" layoutY="125.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="106.0" styleClass="btn" text="Search" />
+                                                <Button fx:id="counter_searchBtn" layoutX="38.0" layoutY="153.0" mnemonicParsing="false" onAction="#searchCounterBtn" prefHeight="31.0" prefWidth="106.0" styleClass="btn" text="Search" />
                                                 <DatePicker fx:id="counter_dateStart" layoutX="394.0" layoutY="10.0" />
-                                                <TextField fx:id="counter_workingdays" layoutX="127.0" layoutY="44.0" prefHeight="26.0" prefWidth="156.0" promptText="0" />
-                                                <Label layoutX="323.0" layoutY="50.0" text="Job:">
+                                                <TextField fx:id="counter_workingdays" layoutX="127.0" layoutY="76.0" prefHeight="26.0" prefWidth="156.0" promptText="0" />
+                                                <Label layoutX="323.0" layoutY="82.0" text="Job:">
                                                     <font>
                                                         <Font name="Verdana" size="12.0" />
                                                     </font>
                                                 </Label>
-                                                <DatePicker fx:id="counter_job" layoutX="393.0" layoutY="45.0" />
-                                                <Label layoutX="31.0" layoutY="86.0" text="Bonus:">
+                                                <DatePicker fx:id="counter_job" layoutX="393.0" layoutY="77.0" />
+                                                <Label layoutX="31.0" layoutY="118.0" text="Bonus:">
                                                     <font>
                                                         <Font name="Verdana" size="12.0" />
                                                     </font>
                                                 </Label>
-                                                <TextField fx:id="counter_bonus" layoutX="127.0" layoutY="81.0" prefHeight="26.0" prefWidth="157.0" promptText="0 VND" />
-                                                <Label layoutX="394.0" layoutY="86.0" prefHeight="18.0" prefWidth="174.0" text="3600000 VND/day" />
+                                                <TextField fx:id="counter_bonus" layoutX="127.0" layoutY="113.0" prefHeight="26.0" prefWidth="157.0" promptText="0 VND" />
+                                                <Label layoutX="394.0" layoutY="118.0" prefHeight="18.0" prefWidth="174.0" text="3600000 VND/day" />
+                                    <Label layoutX="31.0" layoutY="46.0" text="Phone Number:">
+                                       <font>
+                                          <Font name="Verdana" size="12.0" />
+                                       </font>
+                                    </Label>
+                                    <TextField fx:id="counter_phone" layoutX="127.0" layoutY="41.0" prefHeight="26.0" prefWidth="156.0" />
+                                    <Label layoutX="324.0" layoutY="49.0" text="Password:">
+                                       <font>
+                                          <Font name="Verdana" size="12.0" />
+                                       </font>
+                                    </Label>
+                                    <TextField fx:id="counter_password" layoutX="394.0" layoutY="43.0" prefHeight="26.0" prefWidth="176.0" />
                                             </children>
                                             <styleClass>
                                                 <String fx:value="radius" />

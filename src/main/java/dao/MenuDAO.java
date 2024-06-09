@@ -47,7 +47,9 @@ public class MenuDAO implements DAOInterface<Menu> {
         prepare.setString(5, String.valueOf(menu.getPrice()));
 
         prepare.executeUpdate();
-  }
+        DatabaseConnection.closeConnect(connect);
+
+    }
 
     @Override
     public void update(Menu menu) {

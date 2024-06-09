@@ -1,15 +1,14 @@
 package controller;
 
+import dao.EmployeeDAO;
 import dao.MenuDAO;
-import dao.UserDAO;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.collections.transformation.FilteredList;
+import javafx.collections.transformation.SortedList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.chart.AreaChart;
 import javafx.scene.chart.BarChart;
 import javafx.scene.chart.XYChart;
@@ -32,8 +31,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import java.util.ResourceBundle;
-
-import static java.sql.Types.NULL;
 
 public class HomeManagerController implements Initializable {
     @FXML
@@ -87,10 +84,16 @@ public class HomeManagerController implements Initializable {
     private Button counter_searchBtn;
 
     @FXML
-    private TableView<User> counter_table;
+    private TableView<Employee> counter_table;
 
     @FXML
     private Button counter_updateBtn;
+
+    @FXML
+    private TextField counter_password;
+
+    @FXML
+    private TextField counter_phone;
 
     @FXML
     private Button bills_btn;
@@ -353,6 +356,43 @@ public class HomeManagerController implements Initializable {
         }
     }
 
+    public void searchMenuBtn() throws Exception{
+        menuShowData();
+
+        FilteredList<Menu> filteredList = new FilteredList<>(menuListData, b -> true);
+        menu_Search.textProperty().addListener((observableValue, s, t1) -> {
+            filteredList.setPredicate(menu -> {
+                if (t1 == null || t1.isEmpty()) {
+                    return true;
+                }
+                String lowerCaseSearch = t1.toLowerCase();
+
+
+                if(menu.getName().toLowerCase().indexOf(lowerCaseSearch) != -1) {
+                    return true;
+                }
+                else if(menu.getType().toLowerCase().indexOf(lowerCaseSearch) != -1) {
+                    return true;
+                }
+                else if(String.valueOf(menu.getPrice()).toLowerCase().contains(lowerCaseSearch)) {
+                    return true;
+                }
+                else if(menu.getId().toLowerCase().indexOf(lowerCaseSearch) != -1) {
+                    return true;
+                }
+                else if (String.valueOf(menu.getStock()).toLowerCase().contains(lowerCaseSearch)) {
+                    return true;
+                }
+                else {
+                    return false;
+                }
+            });
+        });
+        SortedList<Menu> sortedList = new SortedList<>(filteredList);
+        sortedList.comparatorProperty().bind(menu_table.comparatorProperty());
+        menu_table.setItems(sortedList);
+    }
+
 
     public void addMenuBtn() throws Exception {
 
@@ -457,6 +497,7 @@ public class HomeManagerController implements Initializable {
                 alert.setContentText("Successfully Updated!");
                 alert.showAndWait();
 
+                DatabaseConnection.closeConnect(connect);
                 // Hiện thị lại cái đã caạp nhật lên bảng.
                 menuShowData();
                 // Đặt lại giá trị rỗng cho các label.
@@ -491,6 +532,8 @@ public class HomeManagerController implements Initializable {
                 alert.setContentText("Successfully Deleted!");
                 alert.showAndWait();
 
+
+                DatabaseConnection.closeConnect(connect);
                 // Hiện thị lại dữ liệu lên bảng.
                 menuShowData();
                 // Đặt lại giá trị rỗng cho các label.
@@ -585,10 +628,57 @@ public class HomeManagerController implements Initializable {
             menu_image.setImage(image);
         }
     }
+    public void searchCounterBtn() throws Exception{
+        counterShowData();
+
+        FilteredList<Employee> filteredList = new FilteredList<>(counterListData, b -> true);
+        counter_Search.textProperty().addListener((observableValue, s, t1) -> {
+            filteredList.setPredicate(employee -> {
+                if (t1 == null || t1.isEmpty()) {
+                    return true;
+                }
+                String lowerCaseSearch = t1.toLowerCase();
+
+
+                if(employee.getName().toLowerCase().indexOf(lowerCaseSearch) != -1) {
+                    return true;
+                }
+                else if(employee.getManager_email().toLowerCase().indexOf(lowerCaseSearch) != -1) {
+                    return true;
+                }
+                else if(String.valueOf(employee.getPhone()).toLowerCase().contains(lowerCaseSearch)) {
+                    return true;
+                }
+                else if(employee.getPassword().toLowerCase().indexOf(lowerCaseSearch) != -1) {
+                    return true;
+                }
+                else if (String.valueOf(employee.getSalary()).toLowerCase().contains(lowerCaseSearch)) {
+                    return true;
+                }
+                else if (String.valueOf(employee.getDate()).toLowerCase().contains(lowerCaseSearch)) {
+                    return true;
+                }
+                else if (String.valueOf(employee.getJob()).toLowerCase().contains(lowerCaseSearch)) {
+                    return true;
+                }
+                else if(String.valueOf(employee.getWorkingdays()).toLowerCase().contains(lowerCaseSearch)) {
+                    return true;
+                }
+                else {
+                    return false;
+                }
+            });
+        });
+        SortedList<Employee> sortedList = new SortedList<>(filteredList);
+        sortedList.comparatorProperty().bind(counter_table.comparatorProperty());
+        counter_table.setItems(sortedList);
+    }
 
     public void addCounterBtn() throws Exception {
 
         if (counter_Name.getText().isEmpty()
+                || counter_phone.getText().isEmpty()
+                || counter_password.getText().isEmpty()
                 || counter_workingdays.getText().isEmpty()
                 || counter_job.getValue().toString().isEmpty()
                 || data.pathAvatar == null) {
@@ -599,14 +689,22 @@ public class HomeManagerController implements Initializable {
             alert.setContentText("Please fill all blank fields!");
             alert.showAndWait();
 
-        } else {
-            String checkMenuID = "SELECT name FROM user WHERE name = '" + counter_Name.getText()+ "'";
+        }
+        if(data.currentManager==null){
+            alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Error Message");
+            alert.setHeaderText(null);
+            alert.setContentText("Please LOGIN First!!");
+            alert.showAndWait();
+
+        }else {
+            String checkCounterName = "SELECT name FROM employee WHERE name = '" + counter_Name.getText()+ "'";
 
             connect = DatabaseConnection.getConnection();
 
             statement = connect.createStatement();
 
-            result = statement.executeQuery(checkMenuID);
+            result = statement.executeQuery(checkCounterName);
 
             if (result.next()) {
 
@@ -633,8 +731,8 @@ public class HomeManagerController implements Initializable {
                 LocalDate localDate1 = counter_job.getValue();
                 java.util.Date utilDate1 = Date.valueOf(localDate1);
                 Date sqlDate1 = new Date(utilDate1.getTime());
-                User user = new User(counter_Name.getText(),null, null,NULL,null,sqlDate,sqlDate1,Integer.valueOf(counter_workingdays.getText()),salary,data.pathAvatar);
-                UserDAO.getInstance().insert(user);
+                Employee employee = new Employee(counter_Name.getText(), counter_phone.getText(), counter_password.getText(), sqlDate, sqlDate1, Integer.valueOf(counter_workingdays.getText()), salary, data.pathAvatar, data.currentManager);
+                EmployeeDAO.getInstance().insert(employee);
 
                 alert = new Alert(Alert.AlertType.INFORMATION);
                 alert.setTitle("Information Message");
@@ -655,6 +753,8 @@ public class HomeManagerController implements Initializable {
     public void updateCounterBtn() throws Exception {
 
         if (counter_Name.getText().isEmpty()
+                || counter_phone.getText().isEmpty()
+                || counter_password.getText().isEmpty()
                 || counter_workingdays.getText().isEmpty()
                 || counter_job.getValue().toString().isEmpty()
                 || data.pathAvatar == null) {
@@ -678,11 +778,13 @@ public class HomeManagerController implements Initializable {
             String path = data.pathAvatar;
             path = path.replace("\\", "\\\\");
 
-            String updateData = "UPDATE user SET "
+            String updateData = "UPDATE employee SET "
                     + "name = '"
-                    + counter_Name.getText()+"', date ='"
+                    + counter_Name.getText()+"', phone ='"
+                    + counter_phone.getText()+"', password ='"
+                    + counter_password.getText()+"', date ='"
                     + counter_dateStart.getValue().toString()+"', salary = '"
-                    + salary+"', image = '"
+                    + salary+"', avatar = '"
                     + path + "' WHERE name = '" + data.oldCounterName+"'";
 
 
@@ -705,6 +807,8 @@ public class HomeManagerController implements Initializable {
                 alert.setHeaderText(null);
                 alert.setContentText("Successfully Updated!");
                 alert.showAndWait();
+
+                DatabaseConnection.closeConnect(connect);
 
                 // Hiện thị lại cái đã caạp nhật lên bảng.
                 counterShowData();
@@ -730,7 +834,7 @@ public class HomeManagerController implements Initializable {
             Optional<ButtonType> option = alert.showAndWait();
 
             if (option.get().equals(ButtonType.OK)) {
-                String deleteData = "DELETE FROM user WHERE name = '" + data.oldCounterName+"'";
+                String deleteData = "DELETE FROM employee WHERE name = '" + data.oldCounterName+"'";
                 prepare = connect.prepareStatement(deleteData);
                 prepare.executeUpdate();
 
@@ -739,6 +843,7 @@ public class HomeManagerController implements Initializable {
                 alert.setHeaderText(null);
                 alert.setContentText("Successfully Deleted!");
                 alert.showAndWait();
+                DatabaseConnection.closeConnect(connect);
 
                 // Hiện thị lại dữ liệu lên bảng.
                 counterShowData();
@@ -749,11 +854,11 @@ public class HomeManagerController implements Initializable {
 
     }
 
-    public ObservableList<User> counterDataList() throws Exception {
+    public ObservableList<Employee> counterDataList() throws Exception {
 
-        ObservableList<User> listData = FXCollections.observableArrayList();
+        ObservableList<Employee> listData = FXCollections.observableArrayList();
 
-        String sql = "SELECT * FROM user where email IS NULL";
+        String sql = "SELECT * FROM employee";
 
         connect = DatabaseConnection.getConnection();
 
@@ -761,24 +866,28 @@ public class HomeManagerController implements Initializable {
 
         result = prepare.executeQuery();
 
-        User user;
+        Employee employee;
 
         while (result.next()) {
-                    user = new User(result.getString("name"),
+                    employee = new Employee(result.getString("name"),
+                    result.getString("phone"),
+                    result.getString("password"),
                     result.getDate("date"),
                     result.getDate("job"),
                     result.getInt("workingdays"),
                     result.getInt("salary"),
-                    result.getString("avatar"));
+                    result.getString("avatar"), result.getString("manager_email")
 
-                    listData.add(user);
+                    );
+                    listData.add(employee);
         }
-        for(User user1:listData){
+
+        for(Employee user1:listData){
             System.out.println(user1.getName());
         }
         return listData;
     }
-    private ObservableList<User> counterListData;
+    private ObservableList<Employee> counterListData;
 
     public void counterShowData() throws Exception {
         counterListData = counterDataList();
@@ -794,12 +903,14 @@ public class HomeManagerController implements Initializable {
     }
     public void counterSelectData() {
 
-        User user = counter_table.getSelectionModel().getSelectedItem();
+        Employee user = counter_table.getSelectionModel().getSelectedItem();
         int num = counter_table.getSelectionModel().getSelectedIndex();
 
         if ((num - 1) < -1) return;
 
         counter_Name.setText(user.getName());
+        counter_phone.setText(user.getPhone());
+        counter_password.setText(user.getPassword());
         counter_dateStart.setValue(user.getDate().toLocalDate());
         counter_job.setValue(user.getJob().toLocalDate());
 
@@ -815,6 +926,8 @@ public class HomeManagerController implements Initializable {
 
         // if(event.getSource()==inven_clearBtn) {
         counter_Name.setText("");
+        counter_phone.setText("");
+        counter_password.setText("");
         counter_bonus.setText("");
         counter_job.getEditor().clear();
         counter_dateStart.getEditor().clear();
@@ -945,6 +1058,8 @@ public class HomeManagerController implements Initializable {
         menuTypeList();
         clearCounterBtn();
         try {
+            searchMenuBtn();
+            searchCounterBtn();
             dashboardBillChart();
             dashboardDisplayNB();
             dashboardTotalI();
@@ -954,6 +1069,7 @@ public class HomeManagerController implements Initializable {
             billsShowData();
             menuShowData();
             counterShowData();
+
         } catch (Exception e) {
             throw new RuntimeException(e);
         }

@@ -3,7 +3,7 @@ package model;
 
 import java.sql.Date;
 
-public class User {
+public class Manager {
     private String name;
 
     private String email;
@@ -14,51 +14,27 @@ public class User {
 
     private Integer salary;
     private String avatar;
-    private Date job;
-    private Integer workingdays;
 
-    public User()
+    public Manager()
     {
         super();
     }
 
-    public User(String name, String email, String gender, Integer age, String password, Date date,Date job,Integer workingdays, Integer salary, String avatar) {
+    public Manager(String name, String email, String gender, Integer age, String password, Date date, Integer salary, String avatar) {
         this.name = name;
         this.email = email;
         this.gender = gender;
         this.age = age;
         this.password = password;
         this.date = date;
-        this.job = job;
-        this.workingdays = workingdays;
+
         this.salary = salary;
         this.avatar = avatar;
     }
 
-    public User(String name, Date date, Date job, Integer workingdays, Integer salary, String avatar) {
-        this.name = name;
-        this.date = date;
-        this.salary = salary;
-        this.avatar = avatar;
-        this.job = job;
-        this.workingdays = workingdays;
-    }
-
-    public Date getJob() {
-        return job;
-    }
-
-    public void setJob(Date job) {
-        this.job = job;
-    }
-
-    public Integer getWorkingdays() {
-        return workingdays;
-    }
-
-    public void setWorkingdays(Integer workingdays) {
-        this.workingdays = workingdays;
-    }
+public Manager(String email){
+        this.email = email;
+}
 
     public String getName() {
         return name;

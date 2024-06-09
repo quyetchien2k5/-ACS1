@@ -1,13 +1,8 @@
 package controller;
 
-import dao.UserDAO;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
+import dao.ManagerDAO;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -15,7 +10,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import model.DatabaseConnection;
-import model.User;
+import model.Manager;
 import model.data;
 import view.HomeManagerView;
 
@@ -27,7 +22,6 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.List;
 import java.util.ResourceBundle;
 import java.util.regex.Pattern;
 
@@ -93,17 +87,6 @@ public class LoginManagerController implements Initializable {
     private Alert alert;
 
 
-    private String[] posList = {"Counter", "Manager", "Client"};
-
-    public void invenTypeList() {
-        List<String> typeL = new ArrayList<>();
-        for (String data : posList) {
-            typeL.add(data);
-        }
-
-        ObservableList<String> listData = FXCollections.observableArrayList(typeL);
-        re_position.setItems(listData);
-    }
 
     public void loginBtn() throws Exception {
 
@@ -116,7 +99,7 @@ public class LoginManagerController implements Initializable {
             alert.setContentText("Please enter email/password!");
             alert.showAndWait();
         } else {
-            String selectData = "SELECT email, password FROM user WHERE email = ? and password = ?";
+            String selectData = "SELECT email, password FROM manager WHERE email = ? and password = ?";
 
             connect = DatabaseConnection.getConnection();
 
@@ -177,7 +160,7 @@ public class LoginManagerController implements Initializable {
 
     public void reBtn() throws Exception {
         if (re_name.getText().isEmpty() || re_email.getText().isEmpty() || re_gender.getText().isEmpty()
-                || re_age.getText().isEmpty() || re_password.getText().isEmpty() || re_position.getSelectionModel().getSelectedItem().isEmpty() || re_startWork.getValue() == null
+                || re_age.getText().isEmpty() || re_password.getText().isEmpty() || re_startWork.getValue() == null
                 || re_salary.getText().isEmpty() || re_avatar.getImage() == null) {
 
             alert = new Alert(Alert.AlertType.ERROR);
@@ -187,18 +170,15 @@ public class LoginManagerController implements Initializable {
             alert.showAndWait();
 
         } else {
-            String reData = "INSERT INTO user(name, email, gender, age, password, position, date, salary, avatar)"
-                    + "VALUES(?,?,?,?,?,?,?,?,?)";
 
             connect = DatabaseConnection.getConnection();
 
             // Kiểm tra nếu email đã tồn tài.
-            String checkEmail = "SELECT email FROM user WHERE email = ?";
-            prepare = connect.prepareStatement(checkEmail);
-            prepare.setString(1, re_email.getText());
-            result = prepare.executeQuery();
+            String condition = re_email.getText();
+            ArrayList<Manager> listManager = new ArrayList<Manager>();
+            listManager = ManagerDAO.getInstance().selectByCondition(condition);
 
-            if (result.next()) {
+            if (!listManager.isEmpty()) {
                 alert = new Alert(Alert.AlertType.ERROR);
                 alert.setTitle("Error Message");
                 alert.setHeaderText(null);
@@ -217,21 +197,6 @@ public class LoginManagerController implements Initializable {
                 alert.setContentText("The email INVALID: example@gmail.com");
                 alert.showAndWait();
             } else {
-                String selectedPosition = (String) re_position.getSelectionModel().getSelectedItem();
-                if (selectedPosition.equals("Manager")) {
-                    // Kiểm tra xem đã có bản ghi "Manager" chưa
-                    String checkManager = "SELECT COUNT(*) AS manager_count FROM user WHERE position = 'Manager'";
-                    prepare = connect.prepareStatement(checkManager);
-                    result = prepare.executeQuery();
-                    if (result.next() && result.getInt("manager_count") > 0) {
-                        alert = new Alert(Alert.AlertType.ERROR);
-                        alert.setTitle("Error Message");
-                        alert.setHeaderText(null);
-                        alert.setContentText("There is already a Manager in the database. Cannot add another Manager.");
-                        alert.showAndWait();
-                        return; // Dừng phương thức nếu không thể thêm bản ghi Manager mới
-                    }
-                }
 
                 // Insert dữ liệu vào cơ sở dữ liệu
                 LocalDate localDate = re_startWork.getValue();
@@ -240,8 +205,8 @@ public class LoginManagerController implements Initializable {
                 int age = Integer.parseInt(re_age.getText());
                 Integer salary = Integer.parseInt(re_salary.getText());
 
-                User user = new User(re_name.getText(), re_email.getText(), re_gender.getText(), age, re_password.getText(), sqlDate, null,null, salary, data.pathAvatar);
-                UserDAO.getInstance().insert(user);
+                Manager manager = new Manager(re_name.getText(), re_email.getText(), re_gender.getText(), age, data.encodePassword(re_password.getText()), sqlDate, salary, data.pathAvatar);
+                ManagerDAO.getInstance().insert(manager);
                 alert = new Alert(Alert.AlertType.INFORMATION);
                 alert.setTitle("Information Message");
                 alert.setHeaderText(null);
@@ -276,8 +241,6 @@ public class LoginManagerController implements Initializable {
         re_name.setText("");
         re_salary.setText("");
 
-        re_position.setPromptText("Choose your position...!");
-
 
         re_startWork.setPromptText("Choose date start...!");
    }
@@ -285,7 +248,6 @@ public class LoginManagerController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
-        invenTypeList();
       clear();
     }
 }
